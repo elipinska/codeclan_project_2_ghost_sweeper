@@ -11,22 +11,22 @@ public class BoardTest {
 
     @Before
     public void before() {
-        board = new Board(5);
+        board = new Board(10);
     }
 
     @Test
     public void boardHasRowNo() {
-        assertEquals(5, board.getRowNo());
+        assertEquals(10, board.getRowNo());
     }
 
     @Test
     public void hasBoardIn10ColumnsAnd5Rows() {
-        assertEquals(5, board.getBoard().size());
+        assertEquals(10, board.getBoard().size());
         assertEquals(10, board.getBoard().get(0).size());
     }
 
     @Test
-    public void boardHasBombs__ShouldHave5() {
+    public void boardHasBombs__ShouldHave10() {
         int bombsFound = 0;
 
         for (int y = 0; y < board.getRowNo(); y++) {
@@ -36,6 +36,13 @@ public class BoardTest {
                 }
             }
         }
-        assertEquals(5, bombsFound);
+        assertEquals(10, bombsFound);
     }
+
+    @Test
+    public void canGetBombPositions() {
+        assertEquals(10, board.getBombPositions().size());
+    }
+
+
 }

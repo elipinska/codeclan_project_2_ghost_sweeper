@@ -26,8 +26,11 @@ public class BoardAdapter extends BaseAdapter {
         return 0;
     }
 
+    final Board board = new Board(10);
+
     // create a new Button for each item referenced by the Adapter
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
+
         Button button;
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
@@ -38,8 +41,13 @@ public class BoardAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Button b = (Button)v;
+                    String hint = "Bomb";
+
+                    IUncoverable correspondingField = (IUncoverable) board.getFieldAtIndex(position);
+                    if (!(correspondingField.isBomb()))
+                        hint = ((HintField)correspondingField).getBombCount().toString();
                     if (!(b.getText() == "Long")) {
-                        ((Button) v).setText("Clicked");
+                        ((Button) v).setText(hint);
                     }
                 }
             });
@@ -61,6 +69,7 @@ public class BoardAdapter extends BaseAdapter {
         } else {
             button = (Button) convertView;
         }
+
 
         button.setBackgroundResource(mThumbIds[position]);
         return button;

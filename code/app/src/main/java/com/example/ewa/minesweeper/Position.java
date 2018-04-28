@@ -10,6 +10,14 @@ public class Position {
         this.y = y;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     public int asIndex() {
         //Based on a grid with 10 columns, calculate the index in GridView based on a 2d array
         return (y * 10) + x;

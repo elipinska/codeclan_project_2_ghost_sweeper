@@ -7,11 +7,7 @@ public class BombField extends Field implements IUncoverable {
     }
 
     public String explode() {
-        String result = "";
-        if (getUncovered()) {
-            result = "Game over";
-        }
-        return result;
+       return "Game Over";
     }
 
     public Boolean isBomb() {
