@@ -50,7 +50,7 @@ public class Board {
 
         }
     }
-    
+
     public ArrayList<Position> getBombPositions() {
         ArrayList<Position> bombPositions = new ArrayList<>();
 
