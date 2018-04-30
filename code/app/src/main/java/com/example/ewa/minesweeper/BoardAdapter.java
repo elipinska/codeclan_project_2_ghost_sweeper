@@ -69,7 +69,7 @@ public class BoardAdapter extends BaseAdapter {
             field.markAsUncovered();
 
             if (field.getFieldType() == FieldType.BOMB) {
-                board.uncoverAllBombs();
+                board.uncoverAll();
             }
 
             if (field.getFieldType() == FieldType.EMPTY) {

@@ -132,15 +132,14 @@ public class Board {
         return neighbours;
     }
 
-    public void uncoverAllBombs() {
-        ArrayList<Position> allBombPositions = getBombPositions();
-
-        for(Position position: allBombPositions) {
-            getFieldAtPosition(position).markAsUncovered();
+    public void uncoverAll() {
+        for(Field field: getSimpleFieldsArray()) {
+            field.markAsUncovered();
         }
 
 
     }
+
 
 
 }

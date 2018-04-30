@@ -8,10 +8,10 @@ public class BombField extends Field {
 
     @Override
     public String getTextForButton() {
-        if(!getIsLongPressed()) {
-            return (isUncovered()) ? "Bomb" : "";
-        } else {
+        if(getIsLongPressed() && !isUncovered()) {
             return "Long";
+        } else {
+            return (isUncovered()) ? "Bomb" : "";
         }
     }
 

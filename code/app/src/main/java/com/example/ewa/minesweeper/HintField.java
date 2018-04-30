@@ -27,10 +27,10 @@ public class HintField extends Field {
 
     @Override
     public String getTextForButton() {
-        if (!getIsLongPressed()) {
-            return (isUncovered()) ? prepareTextForButton() : "";
-        } else {
+        if (getIsLongPressed() && !isUncovered()) {
             return "Long";
+        } else {
+            return (isUncovered()) ? prepareTextForButton() : "";
         }
     }
 
