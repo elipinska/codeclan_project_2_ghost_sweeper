@@ -34,7 +34,7 @@ public class Board {
     }
 
     public void addBombs() {
-        int bombNo = rowNo; //One tenth of all fields
+        int bombNo = rowNo * 2; //One fifth of all fields
 
         for (int i = 0; i< bombNo; i++) {
             Random rand = new Random();
