@@ -56,7 +56,7 @@ public class BoardAdapter extends BaseAdapter {
 //        button.setBackgroundResource(R.drawable.tile);
 
         if (field.isUncovered()) {
-            button.setBackgroundColor(Color.RED);
+            button.setBackgroundColor(Color.YELLOW);
         } else {
             button.setBackgroundColor(Color.GREEN);
         }
@@ -64,7 +64,7 @@ public class BoardAdapter extends BaseAdapter {
         if (field.getFieldType() == FieldType.BOMB) {
             BombField bomb = (BombField) field;
             if (bomb.isActivatedByPlayer()) {
-                button.setBackgroundColor(Color.YELLOW);
+                button.setBackgroundColor(Color.RED);
             }
         }
 
@@ -74,12 +74,17 @@ public class BoardAdapter extends BaseAdapter {
     public void uncoverFieldAndNeighbours(Field field) {
 
         if (!field.getIsLongPressed()) {
-            field.markAsUncovered();
 
             if (field.getFieldType() == FieldType.BOMB) {
-                ((BombField) field).activate();
+                if (!field.isUncovered()) {
+                    ((BombField) field).activate();
+                }
                 board.uncoverAll();
             }
+
+            field.markAsUncovered();
+
+
 
             if (field.getFieldType() == FieldType.EMPTY) {
                 ArrayList<Field> neighbours = board.getAllNeighboursForField(field);
@@ -100,7 +105,6 @@ public class BoardAdapter extends BaseAdapter {
             Field field = (Field) view.getTag();
 
             if (!field.getIsLongPressed()) {
-                  field.markAsUncovered();
                   uncoverFieldAndNeighbours(field);
 
                 ((Button) view).setText(field.getTextForButton());
