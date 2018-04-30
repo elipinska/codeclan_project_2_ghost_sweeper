@@ -118,21 +118,32 @@ public class Board {
     }
 
 
-    private ArrayList<Field> getAllNeighboursForField(Field field) {
+    public ArrayList<Field> getAllNeighboursForField(Field field) {
         int positionAsIndex = field.getPosition().asIndex();
         ArrayList<Field> neighbours = new ArrayList<>();
 
-        if (positionAsIndex - 1 >= 0) {
-            neighbours.add(getFieldAtIndex(positionAsIndex - 1));
+        for (int i = positionAsIndex - 11; i <= positionAsIndex +11; i++) {
+            if (i >= 0 && i < getSimpleFieldsArray().size()) {
+                neighbours.add(getFieldAtIndex(i));
+            }
         }
-        if (positionAsIndex - 10 >= 0) {
-            neighbours.add(getFieldAtIndex((positionAsIndex - 10)));
+
+        for (int i = positionAsIndex - 1; i <= positionAsIndex +1; i++) {
+            if (i >= 0 && i < getSimpleFieldsArray().size() && i !=positionAsIndex) {
+                neighbours.add(getFieldAtIndex(i));
+            }
         }
-        if (positionAsIndex + 10 < getSimpleFieldsArray().size()) {
-            neighbours.add(getFieldAtIndex(positionAsIndex + 10));
+
+        for (int i = positionAsIndex - 1; i <= positionAsIndex +1; i++) {
+            if (i >= 0 && i < getSimpleFieldsArray().size() && i !=positionAsIndex) {
+                neighbours.add(getFieldAtIndex(i));
+            }
         }
-        if (positionAsIndex + 1 < getSimpleFieldsArray().size()) {
-            neighbours.add(getFieldAtIndex(positionAsIndex + 1));
+
+        for (int i = positionAsIndex + 9; i <= positionAsIndex +11; i++) {
+            if (i >= 0 && i < getSimpleFieldsArray().size()) {
+                neighbours.add(getFieldAtIndex(i));
+            }
         }
 
         return neighbours;

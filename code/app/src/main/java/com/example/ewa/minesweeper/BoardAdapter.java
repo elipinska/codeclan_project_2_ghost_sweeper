@@ -56,24 +56,23 @@ public class BoardAdapter extends BaseAdapter {
         return button;
     }
 
-//    private ArrayList<Field> getAllNeighbours(int index) {
-//        ArrayList<Field> neighbours = new ArrayList<>();
-//
-//        if (index - 1 >= 0) {
-//            neighbours.add(getItem(index - 1));
-//        }
-//        if (index - 10 >= 0) {
-//            neighbours.add(getItem(index - 10));
-//        }
-//        if (index + 10 <= getCount() -1) {
-//            neighbours.add(getItem(index + 10));
-//        }
-//        if (index + 1 < getCount() -1) {
-//            neighbours.add(getItem(index + 1));
-//        }
-//
-//        return neighbours;
-//    }
+    public void uncoverFieldAndNeighbours(Field field) {
+
+        field.markAsUncovered();
+
+        if (field.getFieldType() == FieldType.EMPTY) {
+            ArrayList<Field> neighbours = board.getAllNeighboursForField(field);
+            for (Field neighbour:neighbours) {
+                if (neighbour.getFieldType() == FieldType.EMPTY && !neighbour.isUncovered()) {
+                    uncoverFieldAndNeighbours(neighbour);
+                }
+            }
+
+        }
+
+
+
+    }
 
 
 
@@ -83,7 +82,8 @@ public class BoardAdapter extends BaseAdapter {
             Button button = (Button)view;
             Field field = (Field) view.getTag();
 
-            field.markAsUncovered();
+//            field.markAsUncovered();
+            uncoverFieldAndNeighbours(field);
 
             if (button.getText() != "Long") {
                 ((Button) view).setText(field.getTextForButton());
