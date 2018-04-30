@@ -40,8 +40,8 @@ public class Board {
             Random rand = new Random();
             int y = rand.nextInt(rowNo);
             int x= rand.nextInt(10);
-            IUncoverable newBombField = (IUncoverable) fields.get(y).get(x);
-            if (!(newBombField.isBomb())) {
+            Field newBombField = fields.get(y).get(x);
+            if (!(newBombField.getFieldType() == FieldType.BOMB)) {
                 fields.get(y).set(x, new BombField(new Position(x, y)));
             } else {
                 bombNo +=1;
@@ -55,7 +55,7 @@ public class Board {
 
         for (int y = 0; y < rowNo; y++) {
             for (int x = 0; x < 10; x++) {
-                if (((IUncoverable) fields.get(y).get(x)).isBomb()) {
+                if ((fields.get(y).get(x)).getFieldType() == FieldType.BOMB) {
                     bombPositions.add(fields.get(y).get(x).getPosition());
                 }
             }
@@ -75,8 +75,8 @@ public class Board {
                 if ((i >= 0) && (i < rowNo)) {
                     for (int j = bombX - 1; j<= bombX + 1; j++) {
                         if ((j >= 0) && (j < 10)) {
-                            IUncoverable neighbour = (IUncoverable) fields.get(i).get(j);
-                            if (!(neighbour.isBomb())) {
+                            Field neighbour = fields.get(i).get(j);
+                            if (!(neighbour.getFieldType() == FieldType.BOMB)) {
                                 ((HintField) neighbour).addToBombCount();
                             }
                         }
@@ -115,6 +115,27 @@ public class Board {
         }
 
         return simpleArrayOfFields;
+    }
+
+
+    private ArrayList<Field> getAllNeighboursForField(Field field) {
+        int positionAsIndex = field.getPosition().asIndex();
+        ArrayList<Field> neighbours = new ArrayList<>();
+
+        if (positionAsIndex - 1 >= 0) {
+            neighbours.add(getFieldAtIndex(positionAsIndex - 1));
+        }
+        if (positionAsIndex - 10 >= 0) {
+            neighbours.add(getFieldAtIndex((positionAsIndex - 10)));
+        }
+        if (positionAsIndex + 10 < getSimpleFieldsArray().size()) {
+            neighbours.add(getFieldAtIndex(positionAsIndex + 10));
+        }
+        if (positionAsIndex + 1 < getSimpleFieldsArray().size()) {
+            neighbours.add(getFieldAtIndex(positionAsIndex + 1));
+        }
+
+        return neighbours;
     }
 
 

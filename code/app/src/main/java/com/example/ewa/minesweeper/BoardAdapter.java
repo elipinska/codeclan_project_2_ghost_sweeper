@@ -7,6 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.os.Vibrator;
 
+import java.util.ArrayList;
+
 public class BoardAdapter extends BaseAdapter {
     private Context mContext;
     private Board board;
@@ -53,6 +55,27 @@ public class BoardAdapter extends BaseAdapter {
         button.setBackgroundResource(R.drawable.tile);
         return button;
     }
+
+//    private ArrayList<Field> getAllNeighbours(int index) {
+//        ArrayList<Field> neighbours = new ArrayList<>();
+//
+//        if (index - 1 >= 0) {
+//            neighbours.add(getItem(index - 1));
+//        }
+//        if (index - 10 >= 0) {
+//            neighbours.add(getItem(index - 10));
+//        }
+//        if (index + 10 <= getCount() -1) {
+//            neighbours.add(getItem(index + 10));
+//        }
+//        if (index + 1 < getCount() -1) {
+//            neighbours.add(getItem(index + 1));
+//        }
+//
+//        return neighbours;
+//    }
+
+
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override

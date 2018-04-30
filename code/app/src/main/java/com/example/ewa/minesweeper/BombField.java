@@ -1,9 +1,9 @@
 package com.example.ewa.minesweeper;
 
-public class BombField extends Field implements IUncoverable {
+public class BombField extends Field {
 
     public BombField(Position position) {
-        super(position);
+        super(position, FieldType.BOMB);
     }
 
     @Override
@@ -15,7 +15,4 @@ public class BombField extends Field implements IUncoverable {
        return "Game Over";
     }
 
-    public Boolean isBomb() {
-        return true;
-    }
 }

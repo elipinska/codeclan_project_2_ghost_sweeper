@@ -31,7 +31,7 @@ public class BoardTest {
 
         for (int y = 0; y < board.getRowNo(); y++) {
             for (int x = 0; x < 10; x++) {
-                if (((IUncoverable) board.getBoard().get(y).get(x)).isBomb()) {
+                if ((board.getBoard().get(y).get(x)).getFieldType() == FieldType.BOMB) {
                     bombsFound += 1;
                 }
             }
