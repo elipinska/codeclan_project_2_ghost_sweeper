@@ -17,9 +17,6 @@ public class HintField extends Field implements IUncoverable {
         return bombCount;
     }
 
-    public void setBombCount(int bombNo) {
-        this.bombCount = bombNo;
-    }
 
     public void addToBombCount() {
         bombCount++;
@@ -27,6 +24,6 @@ public class HintField extends Field implements IUncoverable {
 
     @Override
     public String getTextForButton() {
-        return (getUncovered()) ? getBombCount().toString() : "";
+        return (isUncovered()) ? getBombCount().toString() : "";
     }
 }

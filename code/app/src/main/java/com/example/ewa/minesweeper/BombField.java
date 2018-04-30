@@ -8,7 +8,7 @@ public class BombField extends Field implements IUncoverable {
 
     @Override
     public String getTextForButton() {
-        return (getUncovered()) ? "Bomb" : "";
+        return (isUncovered()) ? "Bomb" : "";
     }
 
     public String explode() {

@@ -43,7 +43,6 @@ public class BoardAdapter extends BaseAdapter {
             button.setOnClickListener(onClickListener);
             button.setOnLongClickListener(onLongClickListener);
         } else {
-
             button = (Button) convertView;
             button.setText("");
         }
@@ -59,13 +58,9 @@ public class BoardAdapter extends BaseAdapter {
         @Override
         public void onClick(View view) {
             Button button = (Button)view;
-            String hint = "";
             Field field = (Field) view.getTag();
 
-
             field.markAsUncovered();
-
-//            IUncoverable correspondingField = (IUncoverable) board.getFieldAtIndex(position);
 
             if (button.getText() != "Long") {
                 ((Button) view).setText(field.getTextForButton());
@@ -79,14 +74,18 @@ public class BoardAdapter extends BaseAdapter {
         @Override
         public boolean onLongClick(View view) {
             Vibrator vibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
-            Button button = (Button)view;
-            if (button.getText() == "Long") {
-                button.setText("");
-                vibrator.vibrate(25);
-            } else {
-                button.setText("Long");
-                vibrator.vibrate(25);
-            }
+            Button button = (Button) view;
+            Field field = (Field) view.getTag();
+
+            if (!field.isUncovered()){
+                if (button.getText() == "Long") {
+                    button.setText("");
+                    vibrator.vibrate(25);
+                } else {
+                    button.setText("Long");
+                    vibrator.vibrate(25);
+                }
+             }
             return true;
         }
     };

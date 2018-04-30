@@ -18,6 +18,8 @@ public class Position {
         return y;
     }
 
+
+    //Potentially redundant?
     public int asIndex() {
         //Based on a grid with 10 columns, calculate the index in GridView based on a 2d array
         return (y * 10) + x;

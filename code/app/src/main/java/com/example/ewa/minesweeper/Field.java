@@ -10,7 +10,7 @@ public abstract class Field {
         this.position = position;
     }
 
-    public Boolean getUncovered() {
+    public Boolean isUncovered() {
         return isUncovered;
     }
 
