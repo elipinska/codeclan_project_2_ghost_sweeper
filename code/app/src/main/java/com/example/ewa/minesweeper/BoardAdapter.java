@@ -38,12 +38,18 @@ public class BoardAdapter extends BaseAdapter {
             button = new Button(mContext);
             button.setLayoutParams(new ViewGroup.LayoutParams(90, 90));
             button.setPadding(0,0, 0, 0);
-            button.setTag(position);
+            Field field = getItem(position);
+            button.setTag(field);
             button.setOnClickListener(onClickListener);
             button.setOnLongClickListener(onLongClickListener);
         } else {
+
             button = (Button) convertView;
+            button.setText("");
         }
+
+        String buttonText = getItem(position).getTextForButton();
+        button.setText(buttonText);
 
         button.setBackgroundResource(R.drawable.tile);
         return button;
@@ -52,17 +58,20 @@ public class BoardAdapter extends BaseAdapter {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Button b = (Button)view;
-            String hint = "Bomb";
-            int position = (int) view.getTag();
+            Button button = (Button)view;
+            String hint = "";
+            Field field = (Field) view.getTag();
 
 
-            IUncoverable correspondingField = (IUncoverable) board.getFieldAtIndex(position);
-            if (!(correspondingField.isBomb()))
-                hint = ((HintField)correspondingField).getBombCount().toString();
-            if (!(b.getText() == "Long")) {
-                ((Button) view).setText(hint);
+            field.markAsUncovered();
+
+//            IUncoverable correspondingField = (IUncoverable) board.getFieldAtIndex(position);
+
+            if (button.getText() != "Long") {
+                ((Button) view).setText(field.getTextForButton());
             }
+
+
         }
     };
 
@@ -70,12 +79,12 @@ public class BoardAdapter extends BaseAdapter {
         @Override
         public boolean onLongClick(View view) {
             Vibrator vibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
-            Button b = (Button)view;
-            if (b.getText() == "Long") {
-                b.setText("");
+            Button button = (Button)view;
+            if (button.getText() == "Long") {
+                button.setText("");
                 vibrator.vibrate(25);
             } else {
-                b.setText("Long");
+                button.setText("Long");
                 vibrator.vibrate(25);
             }
             return true;

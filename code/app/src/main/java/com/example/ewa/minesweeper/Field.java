@@ -17,4 +17,10 @@ public abstract class Field {
     public Position getPosition() {
         return position;
     }
+
+    public abstract String getTextForButton();
+
+    public void markAsUncovered(){
+        this.isUncovered = true;
+    }
 }
