@@ -13,15 +13,22 @@ public class HintField extends Field {
         return bombCount;
     }
 
-
     public void addToBombCount() {
         bombCount++;
+    }
+
+    public String prepareTextForButton() {
+        if (bombCount > 0) {
+            return bombCount.toString();
+        } else {
+            return "";
+        }
     }
 
     @Override
     public String getTextForButton() {
         if (!getIsLongPressed()) {
-            return (isUncovered()) ? getBombCount().toString() : "";
+            return (isUncovered()) ? prepareTextForButton() : "";
         } else {
             return "Long";
         }

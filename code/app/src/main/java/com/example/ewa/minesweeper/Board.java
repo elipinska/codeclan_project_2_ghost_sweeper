@@ -93,11 +93,8 @@ public class Board {
         return fields.get(y).get(x);
     }
 
-    //Potentially redundant
     public Field getFieldAtPosition(Position position) {
-        int y = position.getY();
-        int x = position.getX();
-        return fields.get(y).get(x);
+        return fields.get(position.getY()).get(position.getX());
     }
 
     public ArrayList<Field> getSimpleFieldsArray() {
@@ -133,6 +130,16 @@ public class Board {
                 }
             }
         return neighbours;
+    }
+
+    public void uncoverAllBombs() {
+        ArrayList<Position> allBombPositions = getBombPositions();
+
+        for(Position position: allBombPositions) {
+            getFieldAtPosition(position).markAsUncovered();
+        }
+
+
     }
 
 

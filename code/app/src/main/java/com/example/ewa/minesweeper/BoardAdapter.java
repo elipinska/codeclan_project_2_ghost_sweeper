@@ -1,6 +1,7 @@
 package com.example.ewa.minesweeper;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -52,7 +53,13 @@ public class BoardAdapter extends BaseAdapter {
         String buttonText = getItem(position).getTextForButton();
         button.setText(buttonText);
 
-        button.setBackgroundResource(R.drawable.tile);
+//        button.setBackgroundResource(R.drawable.tile);
+        if (field.isUncovered()) {
+            button.setBackgroundColor(Color.RED);
+        } else {
+            button.setBackgroundColor(Color.GREEN);
+        }
+
         return button;
     }
 
@@ -61,11 +68,15 @@ public class BoardAdapter extends BaseAdapter {
         if (!field.getIsLongPressed()) {
             field.markAsUncovered();
 
+            if (field.getFieldType() == FieldType.BOMB) {
+                board.uncoverAllBombs();
+            }
+
             if (field.getFieldType() == FieldType.EMPTY) {
                 ArrayList<Field> neighbours = board.getAllNeighboursForField(field);
                 for (Field neighbour : neighbours) {
                     if (neighbour.getFieldType() != FieldType.BOMB && !neighbour.isUncovered()) {
-                        uncoverFieldAndNeighbours(neighbour);
+                        uncoverFieldAndNeighbours(neighbour); //recursion
                     }
                 }
 
@@ -105,9 +116,10 @@ public class BoardAdapter extends BaseAdapter {
                 } else {
                     button.setText("Long");
                 }
+                field.toggleLongPressed();
+                vibrator.vibrate(25);
              }
-             field.toggleLongPressed();
-             vibrator.vibrate(25);
+
             return true;
         }
     };
