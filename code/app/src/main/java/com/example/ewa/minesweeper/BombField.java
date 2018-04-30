@@ -2,8 +2,20 @@ package com.example.ewa.minesweeper;
 
 public class BombField extends Field {
 
+    private Boolean activatedByPlayer;
+
     public BombField(Position position) {
         super(position);
+        this.activatedByPlayer = false;
+
+    }
+
+    public Boolean isActivatedByPlayer() {
+        return activatedByPlayer;
+    }
+
+    public void activate() {
+        this.activatedByPlayer = true;
     }
 
     @Override

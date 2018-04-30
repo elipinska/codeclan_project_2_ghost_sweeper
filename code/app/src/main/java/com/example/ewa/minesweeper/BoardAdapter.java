@@ -54,10 +54,18 @@ public class BoardAdapter extends BaseAdapter {
         button.setText(buttonText);
 
 //        button.setBackgroundResource(R.drawable.tile);
+
         if (field.isUncovered()) {
             button.setBackgroundColor(Color.RED);
         } else {
             button.setBackgroundColor(Color.GREEN);
+        }
+
+        if (field.getFieldType() == FieldType.BOMB) {
+            BombField bomb = (BombField) field;
+            if (bomb.isActivatedByPlayer()) {
+                button.setBackgroundColor(Color.YELLOW);
+            }
         }
 
         return button;
@@ -69,6 +77,7 @@ public class BoardAdapter extends BaseAdapter {
             field.markAsUncovered();
 
             if (field.getFieldType() == FieldType.BOMB) {
+                ((BombField) field).activate();
                 board.uncoverAll();
             }
 
