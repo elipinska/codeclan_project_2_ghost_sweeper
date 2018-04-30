@@ -47,7 +47,6 @@ public class BoardAdapter extends BaseAdapter {
             button.setOnLongClickListener(onLongClickListener);
         } else {
             button = (Button) convertView;
-            button.setText("");
         }
 
         String buttonText = getItem(position).getTextForButton();
@@ -59,18 +58,19 @@ public class BoardAdapter extends BaseAdapter {
 
     public void uncoverFieldAndNeighbours(Field field) {
 
-        field.markAsUncovered();
+        if (!field.getIsLongPressed()) {
+            field.markAsUncovered();
 
-        if (field.getFieldType() == FieldType.EMPTY) {
-            ArrayList<Field> neighbours = board.getAllNeighboursForField(field);
-            for (Field neighbour:neighbours) {
-                if (neighbour.getFieldType() != FieldType.BOMB && !neighbour.isUncovered()) {
-                    uncoverFieldAndNeighbours(neighbour);
+            if (field.getFieldType() == FieldType.EMPTY) {
+                ArrayList<Field> neighbours = board.getAllNeighboursForField(field);
+                for (Field neighbour : neighbours) {
+                    if (neighbour.getFieldType() != FieldType.BOMB && !neighbour.isUncovered()) {
+                        uncoverFieldAndNeighbours(neighbour);
+                    }
                 }
+
             }
-
         }
-
     }
 
 
@@ -80,13 +80,13 @@ public class BoardAdapter extends BaseAdapter {
             Button button = (Button)view;
             Field field = (Field) view.getTag();
 
-            field.markAsUncovered();
-            uncoverFieldAndNeighbours(field);
-
-            if (button.getText() != "Long") {
+            if (!field.getIsLongPressed()) {
+                uncoverFieldAndNeighbours(field);
                 ((Button) view).setText(field.getTextForButton());
+                notifyDataSetChanged();
+
             }
-            notifyDataSetChanged();
+
 
         }
     };
@@ -99,7 +99,7 @@ public class BoardAdapter extends BaseAdapter {
             Field field = (Field) view.getTag();
 
             if (!field.isUncovered()){
-                if (button.getText() == "Long") {
+                if (field.getIsLongPressed()) {
                     button.setText("");
                     vibrator.vibrate(25);
                 } else {
@@ -107,6 +107,7 @@ public class BoardAdapter extends BaseAdapter {
                     vibrator.vibrate(25);
                 }
              }
+             field.toggleLongPressed();
             return true;
         }
     };

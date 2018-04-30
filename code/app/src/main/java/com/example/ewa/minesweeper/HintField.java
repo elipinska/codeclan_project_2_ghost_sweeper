@@ -5,7 +5,7 @@ public class HintField extends Field {
     private Integer bombCount;
 
     public HintField(Position position) {
-        super(position, FieldType.EMPTY);
+        super(position);
         bombCount = 0;
     }
 
@@ -20,7 +20,11 @@ public class HintField extends Field {
 
     @Override
     public String getTextForButton() {
-        return (isUncovered()) ? getBombCount().toString() : "";
+        if (!getIsLongPressed()) {
+            return (isUncovered()) ? getBombCount().toString() : "";
+        } else {
+            return "Long";
+        }
     }
 
     @Override

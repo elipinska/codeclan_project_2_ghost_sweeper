@@ -4,14 +4,12 @@ public abstract class Field {
 
     private Boolean isUncovered;
     private Position position;
-    private FieldType fieldType;
     private Boolean isLongPressed;
 
-    public Field(Position position, FieldType fieldType) {
+    public Field(Position position) {
         this.isUncovered = false;
         this.isLongPressed = false;
         this.position = position;
-        this.fieldType = fieldType;
 
     }
 
@@ -41,11 +39,6 @@ public abstract class Field {
         this.isUncovered = true;
     }
 
-    public FieldType getFieldType() {
-        return fieldType;
-    }
+    public abstract FieldType getFieldType();
 
-    public Boolean isBomb() {
-        return false;
-    }
 }
