@@ -11,8 +11,15 @@ public class MineSweeperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine_sweeper);
 
-        GridView gridview = (GridView) findViewById(R.id.gameBoard);
-        gridview.setAdapter(new BoardAdapter(this));
+        Board board = new Board(10);
+
+        BoardAdapter boardAdapter = new BoardAdapter(this, board);
+
+        GridView gridview = (GridView) findViewById(R.id.gameBoardGridView);
+        gridview.setAdapter(boardAdapter);
 
     }
+
+
+
 }

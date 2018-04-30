@@ -1,6 +1,5 @@
 package com.example.ewa.minesweeper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -104,6 +103,18 @@ public class Board {
         int y = position.getY();
         int x = position.getX();
         return fields.get(y).set(x, field);
+    }
+
+    public ArrayList<Field> getSimpleFieldsArray() {
+        ArrayList<Field> simpleArrayOfFields = new ArrayList<>();
+
+        for (ArrayList<Field> row:fields) {
+            for (Field field:row) {
+                simpleArrayOfFields.add(field);
+            }
+        }
+
+        return simpleArrayOfFields;
     }
 
 
