@@ -11,7 +11,7 @@ public class MineSweeperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine_sweeper);
 
-        Board board = new Board(10);
+        Board board = new Board(15);
 
         BoardAdapter boardAdapter = new BoardAdapter(this, board);
 
