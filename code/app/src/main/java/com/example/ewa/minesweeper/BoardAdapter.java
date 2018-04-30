@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.os.Vibrator;
+import android.widget.GridView;
 
 import java.util.ArrayList;
 
@@ -70,9 +71,8 @@ public class BoardAdapter extends BaseAdapter {
 
         }
 
-
-
     }
+
 
 
 
@@ -88,7 +88,7 @@ public class BoardAdapter extends BaseAdapter {
             if (button.getText() != "Long") {
                 ((Button) view).setText(field.getTextForButton());
             }
-
+            notifyDataSetChanged();
 
         }
     };
