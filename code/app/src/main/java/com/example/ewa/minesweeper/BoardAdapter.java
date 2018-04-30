@@ -53,7 +53,7 @@ public class BoardAdapter extends BaseAdapter {
         String buttonText = getItem(position).getTextForButton();
         button.setText(buttonText);
 
-//        button.setBackgroundResource(R.drawable.tile);
+
 
         if (field.isUncovered()) {
             button.setBackgroundColor(Color.YELLOW);
@@ -61,10 +61,11 @@ public class BoardAdapter extends BaseAdapter {
             button.setBackgroundColor(Color.GREEN);
         }
 
-        if (field.getFieldType() == FieldType.BOMB) {
+        if (field.getFieldType() == FieldType.BOMB && field.isUncovered()) {
             BombField bomb = (BombField) field;
+            button.setBackgroundResource(R.drawable.ghost);
             if (bomb.isActivatedByPlayer()) {
-                button.setBackgroundColor(Color.RED);
+                button.setBackgroundResource(R.drawable.ghost_active);
             }
         }
 

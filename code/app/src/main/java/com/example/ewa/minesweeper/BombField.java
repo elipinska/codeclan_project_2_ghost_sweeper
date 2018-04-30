@@ -1,5 +1,7 @@
 package com.example.ewa.minesweeper;
 
+import android.graphics.drawable.Drawable;
+
 public class BombField extends Field {
 
     private Boolean activatedByPlayer;
@@ -23,13 +25,12 @@ public class BombField extends Field {
         if(getIsLongPressed() && !isUncovered()) {
             return "Long";
         } else {
-            return (isUncovered()) ? "Bomb" : "";
+            return "";
         }
     }
 
-    public String explode() {
-       return "Game Over";
-    }
+
+
 
     @Override
     public FieldType getFieldType() {
