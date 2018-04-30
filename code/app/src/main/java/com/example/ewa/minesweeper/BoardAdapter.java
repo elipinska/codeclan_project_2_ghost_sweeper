@@ -72,9 +72,7 @@ public class BoardAdapter extends BaseAdapter {
         }
 
     }
-
-
-
+    
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -82,7 +80,7 @@ public class BoardAdapter extends BaseAdapter {
             Button button = (Button)view;
             Field field = (Field) view.getTag();
 
-//            field.markAsUncovered();
+            field.markAsUncovered();
             uncoverFieldAndNeighbours(field);
 
             if (button.getText() != "Long") {
