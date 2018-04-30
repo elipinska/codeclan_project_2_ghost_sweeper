@@ -93,16 +93,11 @@ public class Board {
         return fields.get(y).get(x);
     }
 
+    //Potentially redundant
     public Field getFieldAtPosition(Position position) {
         int y = position.getY();
         int x = position.getX();
         return fields.get(y).get(x);
-    }
-
-    public Field setFieldAtPosition(Position position, Field field) {
-        int y = position.getY();
-        int x = position.getX();
-        return fields.get(y).set(x, field);
     }
 
     public ArrayList<Field> getSimpleFieldsArray() {

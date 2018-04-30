@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.os.Vibrator;
-import android.widget.GridView;
 
 import java.util.ArrayList;
 
@@ -25,7 +24,7 @@ public class BoardAdapter extends BaseAdapter {
     }
 
     public Field getItem(int position) {
-        return board.getSimpleFieldsArray().get(position);
+        return board.getFieldAtIndex(position);
     }
 
     public long getItemId(int position) {
@@ -47,6 +46,7 @@ public class BoardAdapter extends BaseAdapter {
             button.setOnLongClickListener(onLongClickListener);
         } else {
             button = (Button) convertView;
+            button.setText("");
         }
 
         String buttonText = getItem(position).getTextForButton();
@@ -77,13 +77,14 @@ public class BoardAdapter extends BaseAdapter {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Button button = (Button)view;
             Field field = (Field) view.getTag();
 
             if (!field.getIsLongPressed()) {
-                uncoverFieldAndNeighbours(field);
+                  field.markAsUncovered();
+//                uncoverFieldAndNeighbours(field);
+                
                 ((Button) view).setText(field.getTextForButton());
-                notifyDataSetChanged();
+//                notifyDataSetChanged();
 
             }
 
@@ -101,13 +102,12 @@ public class BoardAdapter extends BaseAdapter {
             if (!field.isUncovered()){
                 if (field.getIsLongPressed()) {
                     button.setText("");
-                    vibrator.vibrate(25);
                 } else {
                     button.setText("Long");
-                    vibrator.vibrate(25);
                 }
              }
              field.toggleLongPressed();
+             vibrator.vibrate(25);
             return true;
         }
     };
