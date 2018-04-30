@@ -36,19 +36,19 @@ public class BoardAdapter extends BaseAdapter {
 
         Button button;
         if (convertView == null) {
-            // if it's not recycled, initialize some attributes
+            // if the view isn't recycled, create a new button
             button = new Button(mContext);
             button.setLayoutParams(new ViewGroup.LayoutParams(90, 90));
             button.setPadding(0,0, 0, 0);
-            Field field = getItem(position);
-            button.setTag(field);
-            button.setOnClickListener(onClickListener);
-            button.setOnLongClickListener(onLongClickListener);
         } else {
+            //otherwise reuse previously created view
             button = (Button) convertView;
-            button.setText("");
         }
 
+        Field field = getItem(position);
+        button.setTag(field);
+        button.setOnClickListener(onClickListener);
+        button.setOnLongClickListener(onLongClickListener);
         String buttonText = getItem(position).getTextForButton();
         button.setText(buttonText);
 
@@ -81,10 +81,10 @@ public class BoardAdapter extends BaseAdapter {
 
             if (!field.getIsLongPressed()) {
                   field.markAsUncovered();
-//                uncoverFieldAndNeighbours(field);
-                
+                  uncoverFieldAndNeighbours(field);
+
                 ((Button) view).setText(field.getTextForButton());
-//                notifyDataSetChanged();
+                notifyDataSetChanged();
 
             }
 
