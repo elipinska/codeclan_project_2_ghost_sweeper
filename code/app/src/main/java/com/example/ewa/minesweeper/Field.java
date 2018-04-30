@@ -5,9 +5,11 @@ public abstract class Field {
     private Boolean isUncovered;
     private Position position;
     private FieldType fieldType;
+    private Boolean isLongPressed;
 
     public Field(Position position, FieldType fieldType) {
         this.isUncovered = false;
+        this.isLongPressed = false;
         this.position = position;
         this.fieldType = fieldType;
 
@@ -15,6 +17,18 @@ public abstract class Field {
 
     public Boolean isUncovered() {
         return isUncovered;
+    }
+
+    public Boolean getIsLongPressed() {
+        return isLongPressed;
+    }
+
+    public void toggleLongPressed() {
+        if (isLongPressed) {
+            isLongPressed = false;
+        } else {
+            isLongPressed = true;
+        }
     }
 
     public Position getPosition() {

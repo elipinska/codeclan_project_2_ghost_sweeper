@@ -64,7 +64,7 @@ public class BoardAdapter extends BaseAdapter {
         if (field.getFieldType() == FieldType.EMPTY) {
             ArrayList<Field> neighbours = board.getAllNeighboursForField(field);
             for (Field neighbour:neighbours) {
-                if (neighbour.getFieldType() == FieldType.EMPTY && !neighbour.isUncovered()) {
+                if (neighbour.getFieldType() != FieldType.BOMB && !neighbour.isUncovered()) {
                     uncoverFieldAndNeighbours(neighbour);
                 }
             }
@@ -72,7 +72,7 @@ public class BoardAdapter extends BaseAdapter {
         }
 
     }
-    
+
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
