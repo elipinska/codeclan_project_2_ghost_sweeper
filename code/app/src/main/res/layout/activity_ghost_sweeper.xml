@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context="com.example.ewa.ghostsweeper.GhostSweeperActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+
+    tools:context="com.example.ewa.ghostsweeper.GhostSweeperActivity">
 
 
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/gameBoardGridView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="473dp"
+        android:layout_marginTop="88dp"
         android:background="@color/colorPrimaryDark"
         android:columnWidth="100dp"
         android:gravity="center"
         android:numColumns="10"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="5dp" />
+        android:verticalSpacing="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
