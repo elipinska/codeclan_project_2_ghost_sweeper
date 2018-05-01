@@ -15,12 +15,7 @@ public class MineSweeperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine_sweeper);
 
-        Board board = new Board(20);
-
-        BoardAdapter boardAdapter = new BoardAdapter(this, board);
-
-        GridView gridview = findViewById(R.id.gameBoardGridView);
-        gridview.setAdapter(boardAdapter);
+        newGame();
 
     }
 
@@ -35,16 +30,20 @@ public class MineSweeperActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //This will get called when the menu item gets clicked
         if(item.getItemId() == R.id.new_game) {
-            Board board = new Board(20);
-            
-            BoardAdapter boardAdapter = new BoardAdapter(this, board);
-
-            GridView gridview = findViewById(R.id.gameBoardGridView);
-            gridview.setAdapter(boardAdapter);
+            newGame();
 
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void newGame() {
+        Board board = new Board(20);
+
+        BoardAdapter boardAdapter = new BoardAdapter(this, board);
+
+        GridView gridview = findViewById(R.id.gameBoardGridView);
+        gridview.setAdapter(boardAdapter);
     }
 
 
