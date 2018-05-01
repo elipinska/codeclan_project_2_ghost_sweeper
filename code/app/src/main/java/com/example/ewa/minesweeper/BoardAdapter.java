@@ -41,6 +41,7 @@ public class BoardAdapter extends BaseAdapter {
             button = new Button(mContext);
             button.setLayoutParams(new ViewGroup.LayoutParams(90, 90));
             button.setPadding(0,0, 0, 0);
+            button.setTextSize(24);
         } else {
             //otherwise reuse previously created view
             button = (Button) convertView;
@@ -65,8 +66,12 @@ public class BoardAdapter extends BaseAdapter {
             BombField bomb = (BombField) field;
             button.setBackgroundResource(R.drawable.ghost);
             if (bomb.isActivatedByPlayer()) {
-                button.setBackgroundResource(R.drawable.ghost_active);
+                button.setBackgroundResource(R.drawable.ghost_angry);
             }
+        }
+
+        if (field.getIsLongPressed()) {
+            button.setBackgroundResource(R.drawable.trap);
         }
 
         return button;
@@ -126,9 +131,9 @@ public class BoardAdapter extends BaseAdapter {
 
             if (!field.isUncovered()){
                 if (field.getIsLongPressed()) {
-                    button.setText("");
+                    button.setBackgroundResource(0);
                 } else {
-                    button.setText("Long");
+                    button.setBackgroundResource(R.drawable.trap);
                 }
                 field.toggleLongPressed();
                 vibrator.vibrate(25);

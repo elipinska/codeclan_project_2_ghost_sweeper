@@ -32,6 +32,8 @@ public class BombField extends Field {
 
 
 
+
+
     @Override
     public FieldType getFieldType() {
         return FieldType.BOMB;
