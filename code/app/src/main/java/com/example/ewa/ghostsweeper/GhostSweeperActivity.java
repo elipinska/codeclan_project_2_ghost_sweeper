@@ -37,7 +37,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
     }
 
     public void newGame() {
-        Game game = new Game(5);
+        Game game = new Game(20);
 
         BoardAdapter boardAdapter = new BoardAdapter(this, game);
 
