@@ -1,4 +1,4 @@
-package com.example.ewa.minesweeper;
+package com.example.ewa.ghostsweeper;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

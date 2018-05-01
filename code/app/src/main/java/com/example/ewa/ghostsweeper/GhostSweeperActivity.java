@@ -1,4 +1,4 @@
-package com.example.ewa.minesweeper;
+package com.example.ewa.ghostsweeper;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,14 +6,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.GridView;
-import android.widget.Toast;
 
-public class MineSweeperActivity extends AppCompatActivity {
+public class GhostSweeperActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mine_sweeper);
+        setContentView(R.layout.activity_ghost_sweeper);
 
         newGame();
 

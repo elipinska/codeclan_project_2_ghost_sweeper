@@ -1,12 +1,10 @@
-package com.example.ewa.minesweeper;
+package com.example.ewa.ghostsweeper;
 
-import android.graphics.drawable.Drawable;
-
-public class BombField extends Field {
+public class GhostField extends Field {
 
     private Boolean activatedByPlayer;
 
-    public BombField(Position position) {
+    public GhostField(Position position) {
         super(position);
         this.activatedByPlayer = false;
 
@@ -24,10 +22,6 @@ public class BombField extends Field {
     public String getTextForButton() {
         return "";
     }
-
-
-
-
 
 
     @Override

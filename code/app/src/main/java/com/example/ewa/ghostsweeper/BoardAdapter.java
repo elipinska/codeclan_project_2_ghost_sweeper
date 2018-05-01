@@ -1,7 +1,6 @@
-package com.example.ewa.minesweeper;
+package com.example.ewa.ghostsweeper;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +64,7 @@ public class BoardAdapter extends BaseAdapter {
         }
 
         if (field.getFieldType() == FieldType.BOMB && field.isUncovered()) {
-            BombField bomb = (BombField) field;
+            GhostField bomb = (GhostField) field;
             button.setBackgroundResource(R.drawable.ghost);
             if (bomb.isActivatedByPlayer()) {
                 button.setBackgroundResource(R.drawable.ghost_angry);
@@ -85,7 +84,7 @@ public class BoardAdapter extends BaseAdapter {
 
             if (field.getFieldType() == FieldType.BOMB) {
                 if (!field.isUncovered()) {
-                    ((BombField) field).activate();
+                    ((GhostField) field).activate();
                     Toast.makeText(mContext, R.string.lost_message,
                             Toast.LENGTH_LONG).show();
                 }

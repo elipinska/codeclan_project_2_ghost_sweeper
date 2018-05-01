@@ -1,4 +1,4 @@
-package com.example.ewa.minesweeper;
+package com.example.ewa.ghostsweeper;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.example.ewa.minesweeper;
+package com.example.ewa.ghostsweeper;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -42,7 +42,7 @@ public class Board {
             int x= rand.nextInt(10);
             Field newBombField = fields.get(y).get(x);
             if (!(newBombField.getFieldType() == FieldType.BOMB)) {
-                fields.get(y).set(x, new BombField(new Position(x, y)));
+                fields.get(y).set(x, new GhostField(new Position(x, y)));
             } else {
                 bombNo +=1;
             }
