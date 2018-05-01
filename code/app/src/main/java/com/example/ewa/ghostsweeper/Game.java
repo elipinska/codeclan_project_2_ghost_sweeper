@@ -1,12 +1,16 @@
 package com.example.ewa.ghostsweeper;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class Game {
+public class Game implements Parcelable {
 
     private Board board;
     private int uncoveredFieldsCount;
     private GameStatusType gameStatus;
+    private int mData;
 
     public Game(int rowNo) {
         this.board = new Board(rowNo);
@@ -81,4 +85,31 @@ public class Game {
             }
         }
     }
+
+
+        public int describeContents() {
+            return 0;
+        }
+
+//        Saves object in a Parcel
+        public void writeToParcel(Parcel out, int flags) {
+            out.writeInt(mData);
+        }
+
+        public static final Parcelable.Creator<Game> CREATOR
+                = new Parcelable.Creator<Game>() {
+            public Game createFromParcel(Parcel in) {
+                return new Game(in);
+            }
+
+            public Game[] newArray(int size) {
+                return new Game[size];
+            }
+        };
+
+//        Recreates object from parcel
+        private Game(Parcel in) {
+            mData = in.readInt();
+        }
+
 }

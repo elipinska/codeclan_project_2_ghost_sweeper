@@ -9,6 +9,8 @@ import android.widget.GridView;
 
 public class GhostSweeperActivity extends AppCompatActivity {
 
+    private Game game;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +38,35 @@ public class GhostSweeperActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable("game", game);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        BoardAdapter boardAdapter = new BoardAdapter(this, game);
+
+        GridView gridview = findViewById(R.id.gameBoardGridView);
+        gridview.setAdapter(boardAdapter);
+
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        game = savedInstanceState.getParcelable("game");
+
+    }
+
     public void newGame() {
-        Game game = new Game(20);
+        game = new Game(20);
 
         BoardAdapter boardAdapter = new BoardAdapter(this, game);
 
