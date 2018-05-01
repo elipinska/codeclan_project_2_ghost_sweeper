@@ -5,11 +5,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
 
 public class GhostSweeperActivity extends AppCompatActivity {
 
     private Game game;
+    private TextView trapsLeftTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -17,6 +21,9 @@ public class GhostSweeperActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ghost_sweeper);
 
         newGame();
+
+        trapsLeftTextView = findViewById(R.id.trapsLeftTextView);
+        trapsLeftTextView.setText(Integer.toString(game.getBoard().getBombPositions().size()));
 
     }
 
@@ -72,6 +79,10 @@ public class GhostSweeperActivity extends AppCompatActivity {
 
         GridView gridview = findViewById(R.id.gameBoardGridView);
         gridview.setAdapter(boardAdapter);
+    }
+
+    public void onNewGameButtonPressed(View button) {
+        newGame();
     }
 
 
