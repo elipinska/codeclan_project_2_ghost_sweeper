@@ -2,6 +2,7 @@ package com.example.ewa.minesweeper;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -57,9 +58,9 @@ public class BoardAdapter extends BaseAdapter {
 
 
         if (field.isUncovered()) {
-            button.setBackgroundColor(Color.YELLOW);
+            button.setBackgroundColor(ContextCompat.getColor(mContext, R.color.uncoveredTiles));
         } else {
-            button.setBackgroundColor(Color.GREEN);
+            button.setBackgroundColor(ContextCompat.getColor(mContext, R.color.coveredTiles));
         }
 
         if (field.getFieldType() == FieldType.BOMB && field.isUncovered()) {
@@ -131,8 +132,7 @@ public class BoardAdapter extends BaseAdapter {
 
             if (!field.isUncovered()){
                 if (field.getIsLongPressed()) {
-//                    button.setBackgroundResource(0);
-                    button.setBackgroundColor(Color.GREEN);
+                    button.setBackgroundColor(ContextCompat.getColor(mContext, R.color.coveredTiles));
                     button.setText("");
                 } else {
                     button.setBackgroundResource(R.drawable.trap);
