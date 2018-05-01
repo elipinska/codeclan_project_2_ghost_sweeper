@@ -17,20 +17,12 @@ public class HintField extends Field {
         bombCount++;
     }
 
-    public String prepareTextForButton() {
-        if (bombCount > 0) {
-            return bombCount.toString();
-        } else {
-            return "";
-        }
-    }
-
     @Override
     public String getTextForButton() {
         if (getIsLongPressed() && !isUncovered()) {
-            return "Long";
+            return "";
         } else {
-            return (isUncovered()) ? prepareTextForButton() : "";
+            return (isUncovered() && bombCount > 0) ? bombCount.toString() : "";
         }
     }
 

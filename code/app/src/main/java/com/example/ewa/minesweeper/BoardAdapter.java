@@ -131,7 +131,9 @@ public class BoardAdapter extends BaseAdapter {
 
             if (!field.isUncovered()){
                 if (field.getIsLongPressed()) {
-                    button.setBackgroundResource(0);
+//                    button.setBackgroundResource(0);
+                    button.setBackgroundColor(Color.GREEN);
+                    button.setText("");
                 } else {
                     button.setBackgroundResource(R.drawable.trap);
                 }

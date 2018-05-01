@@ -22,11 +22,7 @@ public class BombField extends Field {
 
     @Override
     public String getTextForButton() {
-        if(getIsLongPressed() && !isUncovered()) {
-            return "Long";
-        } else {
-            return "";
-        }
+        return "";
     }
 
 
