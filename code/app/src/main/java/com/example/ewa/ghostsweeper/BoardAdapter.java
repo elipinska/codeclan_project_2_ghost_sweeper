@@ -114,11 +114,16 @@ public class BoardAdapter extends BaseAdapter {
                 if (field.getIsLongPressed()) {
                     button.setBackgroundColor(ContextCompat.getColor(mContext, R.color.coveredTiles));
                     button.setText("");
-                } else {
+                    game.addToTrapsLeft();
+                    field.toggleLongPressed();
+                    vibrator.vibrate(25);
+                } else if (game.getTrapsLeft() > 0){
                     button.setBackgroundResource(R.drawable.trap);
+                    game.subtractFromTrapsLeft();
+                    field.toggleLongPressed();
+                    vibrator.vibrate(25);
                 }
-                field.toggleLongPressed();
-                vibrator.vibrate(25);
+
              }
 
             return true;

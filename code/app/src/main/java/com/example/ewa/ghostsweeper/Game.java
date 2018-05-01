@@ -11,11 +11,13 @@ public class Game implements Parcelable {
     private int uncoveredFieldsCount;
     private GameStatusType gameStatus;
     private int mData;
+    private int trapsLeft;
 
     public Game(int rowNo) {
         this.board = new Board(rowNo);
         this.uncoveredFieldsCount = 0;
         this.gameStatus = GameStatusType.IN_PROGRESS;
+        this.trapsLeft = board.getRowNo() * 2;
     }
 
     public Board getBoard() {
@@ -28,6 +30,18 @@ public class Game implements Parcelable {
 
     public GameStatusType getGameStatus() {
         return gameStatus;
+    }
+
+    public int getTrapsLeft() {
+        return trapsLeft;
+    }
+
+    public void addToTrapsLeft() {
+        trapsLeft++;
+    }
+
+    public void subtractFromTrapsLeft() {
+        trapsLeft--;
     }
 
     public void addToUncoveredFieldsCount() {

@@ -23,7 +23,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
         newGame();
 
         trapsLeftTextView = findViewById(R.id.trapsLeftTextView);
-        trapsLeftTextView.setText(Integer.toString(game.getBoard().getBombPositions().size()));
+        trapsLeftTextView.setText(Integer.toString(game.getTrapsLeft()));
 
     }
 
