@@ -1,7 +1,5 @@
 package com.example.ewa.ghostsweeper;
 
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Random;
 

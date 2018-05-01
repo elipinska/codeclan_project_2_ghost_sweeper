@@ -34,18 +34,20 @@ public class Game {
         int allFieldsCount = board.getSimpleFieldsArray().size();
         int bombCount = board.getBombPositions().size();
 
-        if (uncoveredFieldsCount == allFieldsCount) {
-            return GameStatusType.LOST;
+        if (uncoveredFieldsCount >= allFieldsCount) {
+            gameStatus = GameStatusType.LOST;
         } else if (uncoveredFieldsCount == allFieldsCount - bombCount) {
-            return GameStatusType.WON;
-        } else {
-            return GameStatusType.IN_PROGRESS;
+            gameStatus = GameStatusType.WON;
         }
+        return gameStatus;
     }
 
     public void uncoverAll() {
         for(Field field: board.getSimpleFieldsArray()) {
-            field.markAsUncovered();
+            if (!field.isUncovered()) {
+                field.markAsUncovered();
+                addToUncoveredFieldsCount();
+            }
         }
 
 
@@ -59,24 +61,23 @@ public class Game {
             if (field.getFieldType() == FieldType.BOMB) {
                 if (!field.isUncovered()) {
                     ((GhostField) field).activate();
-//                    Toast.makeText(mContext, R.string.lost_message,
-//                            Toast.LENGTH_LONG).show();
                 }
                 uncoverAll();
-            }
+            } else {
 
-            field.markAsUncovered();
+                field.markAsUncovered();
+                addToUncoveredFieldsCount();
 
 
-
-            if (field.getFieldType() == FieldType.EMPTY) {
-                ArrayList<Field> neighbours = board.getAllNeighboursForField(field);
-                for (Field neighbour : neighbours) {
-                    if (neighbour.getFieldType() != FieldType.BOMB && !neighbour.isUncovered()) {
-                        uncoverFieldAndNeighbours(neighbour); //recursion
+                if (field.getFieldType() == FieldType.EMPTY) {
+                    ArrayList<Field> neighbours = board.getAllNeighboursForField(field);
+                    for (Field neighbour : neighbours) {
+                        if (neighbour.getFieldType() != FieldType.BOMB && !neighbour.isUncovered()) {
+                            uncoverFieldAndNeighbours(neighbour); //recursion
+                        }
                     }
-                }
 
+                }
             }
         }
     }

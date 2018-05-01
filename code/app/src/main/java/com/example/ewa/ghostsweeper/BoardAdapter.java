@@ -87,8 +87,15 @@ public class BoardAdapter extends BaseAdapter {
             if (!field.getIsLongPressed()) {
                   game.uncoverFieldAndNeighbours(field);
 
-                ((Button) view).setText(field.getTextForButton());
-                notifyDataSetChanged();
+                  GameStatusType gameStatus = game.checkIfGameWonOrLost();
+
+                  if (gameStatus == GameStatusType.LOST) {
+                      Toast.makeText(mContext, R.string.lost_message, Toast.LENGTH_LONG).show();
+                  } else if (gameStatus == GameStatusType.WON) {
+                      Toast.makeText(mContext, R.string.won_message, Toast.LENGTH_LONG).show();
+                  }
+
+                  notifyDataSetChanged();
 
             }
 
