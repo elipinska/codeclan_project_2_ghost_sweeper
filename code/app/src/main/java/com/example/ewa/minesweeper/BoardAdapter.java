@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.os.Vibrator;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -85,6 +86,8 @@ public class BoardAdapter extends BaseAdapter {
             if (field.getFieldType() == FieldType.BOMB) {
                 if (!field.isUncovered()) {
                     ((BombField) field).activate();
+                    Toast.makeText(mContext, R.string.lost_message,
+                            Toast.LENGTH_LONG).show();
                 }
                 board.uncoverAll();
             }
