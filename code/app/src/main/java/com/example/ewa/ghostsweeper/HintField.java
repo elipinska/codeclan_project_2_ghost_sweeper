@@ -21,8 +21,10 @@ public class HintField extends Field {
     public String getTextForButton() {
         if (getIsLongPressed() && !isUncovered()) {
             return "";
+        } else if (getIsLongPressed() && isUncovered()) {
+            return "X";
         } else {
-            return (isUncovered() && bombCount > 0) ? bombCount.toString() : "";
+            return (!getIsLongPressed() && isUncovered() && bombCount > 0) ? bombCount.toString() : "";
         }
     }
 
