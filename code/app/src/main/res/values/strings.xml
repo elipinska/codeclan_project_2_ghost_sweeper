@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Ghost Sweeper</string>
     <string name="lost_message">You face an angry spectre and hear spooky howling all around you. The ghosts know you\'re here! Game over.</string>
+    <string name="new_game">New game</string>
 </resources>
