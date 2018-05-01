@@ -1,5 +1,7 @@
 package com.example.ewa.ghostsweeper;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -132,13 +134,6 @@ public class Board {
         return neighbours;
     }
 
-    public void uncoverAll() {
-        for(Field field: getSimpleFieldsArray()) {
-            field.markAsUncovered();
-        }
-
-
-    }
 
 
 

@@ -13,20 +13,20 @@ import java.util.ArrayList;
 
 public class BoardAdapter extends BaseAdapter {
     private Context mContext;
-    private Board board;
+    private Game game;
 
 
-    public BoardAdapter(Context context, Board board) {
+    public BoardAdapter(Context context, Game game) {
         mContext = context;
-        this.board = board;
+        this.game = game;
     }
 
     public int getCount() {
-        return board.getSimpleFieldsArray().size();
+        return game.getBoard().getSimpleFieldsArray().size();
     }
 
     public Field getItem(int position) {
-        return board.getFieldAtIndex(position);
+        return game.getBoard().getFieldAtIndex(position);
     }
 
     public long getItemId(int position) {
@@ -78,35 +78,6 @@ public class BoardAdapter extends BaseAdapter {
         return button;
     }
 
-    public void uncoverFieldAndNeighbours(Field field) {
-
-        if (!field.getIsLongPressed()) {
-
-            if (field.getFieldType() == FieldType.BOMB) {
-                if (!field.isUncovered()) {
-                    ((GhostField) field).activate();
-                    Toast.makeText(mContext, R.string.lost_message,
-                            Toast.LENGTH_LONG).show();
-                }
-                board.uncoverAll();
-            }
-
-            field.markAsUncovered();
-
-
-
-            if (field.getFieldType() == FieldType.EMPTY) {
-                ArrayList<Field> neighbours = board.getAllNeighboursForField(field);
-                for (Field neighbour : neighbours) {
-                    if (neighbour.getFieldType() != FieldType.BOMB && !neighbour.isUncovered()) {
-                        uncoverFieldAndNeighbours(neighbour); //recursion
-                    }
-                }
-
-            }
-        }
-    }
-
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -114,7 +85,7 @@ public class BoardAdapter extends BaseAdapter {
             Field field = (Field) view.getTag();
 
             if (!field.getIsLongPressed()) {
-                  uncoverFieldAndNeighbours(field);
+                  game.uncoverFieldAndNeighbours(field);
 
                 ((Button) view).setText(field.getTextForButton());
                 notifyDataSetChanged();

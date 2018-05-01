@@ -37,9 +37,9 @@ public class GhostSweeperActivity extends AppCompatActivity {
     }
 
     public void newGame() {
-        Board board = new Board(20);
+        Game game = new Game(20);
 
-        BoardAdapter boardAdapter = new BoardAdapter(this, board);
+        BoardAdapter boardAdapter = new BoardAdapter(this, game);
 
         GridView gridview = findViewById(R.id.gameBoardGridView);
         gridview.setAdapter(boardAdapter);

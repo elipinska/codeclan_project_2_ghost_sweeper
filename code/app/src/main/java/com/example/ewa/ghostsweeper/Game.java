@@ -1,5 +1,7 @@
 package com.example.ewa.ghostsweeper;
 
+import java.util.ArrayList;
+
 public class Game {
 
     private Board board;
@@ -24,6 +26,10 @@ public class Game {
         return gameStatus;
     }
 
+    public void addToUncoveredFieldsCount() {
+        uncoveredFieldsCount++;
+    }
+
     public GameStatusType checkIfGameWonOrLost() {
         int allFieldsCount = board.getSimpleFieldsArray().size();
         int bombCount = board.getBombPositions().size();
@@ -34,6 +40,44 @@ public class Game {
             return GameStatusType.WON;
         } else {
             return GameStatusType.IN_PROGRESS;
+        }
+    }
+
+    public void uncoverAll() {
+        for(Field field: board.getSimpleFieldsArray()) {
+            field.markAsUncovered();
+        }
+
+
+    }
+
+
+    public void uncoverFieldAndNeighbours(Field field) {
+
+        if (!field.getIsLongPressed()) {
+
+            if (field.getFieldType() == FieldType.BOMB) {
+                if (!field.isUncovered()) {
+                    ((GhostField) field).activate();
+//                    Toast.makeText(mContext, R.string.lost_message,
+//                            Toast.LENGTH_LONG).show();
+                }
+                uncoverAll();
+            }
+
+            field.markAsUncovered();
+
+
+
+            if (field.getFieldType() == FieldType.EMPTY) {
+                ArrayList<Field> neighbours = board.getAllNeighboursForField(field);
+                for (Field neighbour : neighbours) {
+                    if (neighbour.getFieldType() != FieldType.BOMB && !neighbour.isUncovered()) {
+                        uncoverFieldAndNeighbours(neighbour); //recursion
+                    }
+                }
+
+            }
         }
     }
 }
