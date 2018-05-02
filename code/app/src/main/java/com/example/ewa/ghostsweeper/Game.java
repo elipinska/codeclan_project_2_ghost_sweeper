@@ -47,7 +47,7 @@ public class Game implements Parcelable {
 
         if (uncoveredFieldsCount >= allFieldsCount) {
             gameStatus = GameStatusType.LOST;
-        } else if (uncoveredFieldsCount == allFieldsCount - bombCount) {
+        } else if (uncoveredFieldsCount == allFieldsCount - bombCount && trapsLeft == 0) {
             gameStatus = GameStatusType.WON;
         }
         return gameStatus;
