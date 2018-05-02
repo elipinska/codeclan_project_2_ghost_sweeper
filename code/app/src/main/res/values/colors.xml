@@ -5,4 +5,12 @@
     <color name="colorAccent">#FF681D</color>
     <color name="coveredTiles">#E08710</color>
     <color name="uncoveredTiles">#FFD519</color>
+    <color name="hint_color_one">#438530</color>
+    <color name="hint_color_two">#2B61BA</color>
+    <color name="hint_color_three">#501999</color>
+    <color name="hint_color_four">#E0393F</color>
+    <color name="hint_color_five">#57210A</color>
+    <color name="hint_color_six">#187378</color>
+    <color name="hint_color_seven">#F2107E</color>
+    <color name="hint_color_eight">#3E3842</color>
 </resources>

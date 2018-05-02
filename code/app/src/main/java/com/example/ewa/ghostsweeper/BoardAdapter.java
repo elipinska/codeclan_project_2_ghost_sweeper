@@ -49,6 +49,7 @@ public class BoardAdapter extends BaseAdapter {
         convertView.setTag(field);
         String buttonText = getItem(position).getTextForButton();
         tile.setText(buttonText);
+        tile.setTextColor(ContextCompat.getColor(mContext, HintTextColor.getHintColor(buttonText)));
 
 
 
