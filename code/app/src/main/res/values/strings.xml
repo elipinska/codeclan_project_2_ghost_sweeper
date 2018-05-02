@@ -4,4 +4,9 @@
     <string name="new_game">New game</string>
     <string name="won_message">Congratulations, you\'ve trapped all the ghosts - you win!</string>
     <string name="about">About</string>
+    <string name="about_info">Ghost Sweeper is a simple Android app written in Java, created as my second individual project during CodeClan\'s 16-week software development course. See the <a href="https://github.com/elipinska/codeclan_project_2_ghost_sweeper">game\'s Github repository</a> or learn more about my other projects from <a href="https://elipinska.github.io/">my personal website</a>.</string>
+    <string name="credits">Credits</string>
+    <string name="credits_info">Game mechanics based on the popular Minesweeper game. Icons made by <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a>, <a href="http://www.freepik.com" title="Freepik">Freepik</a> and <a href="https://www.flaticon.com/authors/dimitry-miroliubov" title="Dimitry Miroliubov">Dimitry Miroliubov</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>. Licensed under CC 3.0 BY.</string>
+
+
 </resources>
