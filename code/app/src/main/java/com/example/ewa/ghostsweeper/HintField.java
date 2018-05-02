@@ -9,9 +9,6 @@ public class HintField extends Field {
         bombCount = 0;
     }
 
-    public Integer getBombCount() {
-        return bombCount;
-    }
 
     public void addToBombCount() {
         bombCount++;

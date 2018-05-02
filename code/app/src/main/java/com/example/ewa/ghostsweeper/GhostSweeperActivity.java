@@ -19,6 +19,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
 
     private Game game;
     private TextView trapsLeftTextView;
+    private GridView gridview;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
 
         final BoardAdapter boardAdapter = new BoardAdapter(this, game);
 
-        GridView gridview = findViewById(R.id.gameBoardGridView);
+        gridview = findViewById(R.id.gameBoardGridView);
         gridview.setAdapter(boardAdapter);
 
         trapsLeftTextView = findViewById(R.id.trapsLeftTextView);
@@ -56,7 +57,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
                     String buttonText = field.getTextForButton();
                     tile.setText(buttonText);
 
-                    boardAdapter.notifyDataSetChanged();
+                    ((BoardAdapter)gridview.getAdapter()).notifyDataSetChanged();
 
                 }
             }
@@ -136,7 +137,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
     }
 
     public void newGame() {
-        game = new Game(20);
+        game = new Game(2);
 
         BoardAdapter boardAdapter = new BoardAdapter(this, game);
 

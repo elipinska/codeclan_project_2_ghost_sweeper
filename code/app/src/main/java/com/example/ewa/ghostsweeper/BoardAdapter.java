@@ -36,24 +36,17 @@ public class BoardAdapter extends BaseAdapter {
         return 0;
     }
 
-    // create a new Button for each item referenced by the Adapter
+    // create a new TextView using single_tile layout for each item referenced by the Adapter
     public View getView(final int position, View convertView, ViewGroup parent) {
 
 
         if (convertView == null) {
-            // if the view isn't recycled, create a new button
             convertView = LayoutInflater.from(mContext).inflate(R.layout.single_tile, parent, false);
-//            button = new Button(mContext);
-//            button.setLayoutParams(new ViewGroup.LayoutParams(90, 90));
-//            button.setPadding(0,0, 0, 0);
-//            button.setTextSize(24);
         }
 
         Field field = getItem(position);
         TextView tile = convertView.findViewById(R.id.singleTileTextView);
         convertView.setTag(field);
-//        tile.setOnClickListener(onClickListener);
-//        tile.setOnLongClickListener(onLongClickListener);
         String buttonText = getItem(position).getTextForButton();
         tile.setText(buttonText);
 
@@ -79,58 +72,5 @@ public class BoardAdapter extends BaseAdapter {
 
         return convertView;
     }
-
-
-//    View.OnClickListener onClickListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View view) {
-//            Field field = (Field) view.getTag();
-//
-//            if (!field.getIsLongPressed()) {
-//                  game.uncoverFieldAndNeighbours(field);
-//
-//                  GameStatusType gameStatus = game.checkIfGameWonOrLost();
-//
-//                  if (gameStatus == GameStatusType.LOST) {
-//                      Toast.makeText(mContext, R.string.lost_message, Toast.LENGTH_LONG).show();
-//                  } else if (gameStatus == GameStatusType.WON) {
-//                      Toast.makeText(mContext, R.string.won_message, Toast.LENGTH_LONG).show();
-//                  }
-//
-//                  notifyDataSetChanged();
-//
-//            }
-//
-//
-//        }
-//    };
-//
-//    View.OnLongClickListener onLongClickListener = new View.OnLongClickListener() {
-//        @Override
-//        public boolean onLongClick(View view) {
-//            Vibrator vibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
-//            Button button = (Button) view;
-//            Field field = (Field) view.getTag();
-//
-//            if (!field.isUncovered()){
-//                if (field.getIsLongPressed()) {
-//                    button.setBackgroundColor(ContextCompat.getColor(mContext, R.color.coveredTiles));
-//                    button.setText("");
-//                    game.addToTrapsLeft();
-//                    field.toggleLongPressed();
-//                    vibrator.vibrate(25);
-//                } else if (game.getTrapsLeft() > 0){
-//                    button.setBackgroundResource(R.drawable.trap);
-//                    game.subtractFromTrapsLeft();
-//                    field.toggleLongPressed();
-//                    vibrator.vibrate(25);
-//                }
-//
-//             }
-//
-//            return true;
-//        }
-//    };
-
 
 }

@@ -24,13 +24,6 @@ public class Game implements Parcelable {
         return board;
     }
 
-    public int getUncoveredFieldsCount() {
-        return uncoveredFieldsCount;
-    }
-
-    public GameStatusType getGameStatus() {
-        return gameStatus;
-    }
 
     public int getTrapsLeft() {
         return trapsLeft;

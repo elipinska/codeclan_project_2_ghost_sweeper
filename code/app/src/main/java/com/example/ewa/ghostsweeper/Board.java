@@ -92,10 +92,7 @@ public class Board {
 
         return fields.get(y).get(x);
     }
-
-    public Field getFieldAtPosition(Position position) {
-        return fields.get(position.getY()).get(position.getX());
-    }
+    
 
     public ArrayList<Field> getSimpleFieldsArray() {
         ArrayList<Field> simpleArrayOfFields = new ArrayList<>();
