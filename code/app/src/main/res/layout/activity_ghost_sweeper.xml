@@ -50,12 +50,24 @@
         android:layout_marginLeft="44dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
+        android:textSize="24dp"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toTopOf="@+id/gameBoardGridView"
         app:layout_constraintEnd_toStartOf="@+id/newGameButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.142" />
+
+    <ImageView
+        android:id="@+id/trapImageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintEnd_toStartOf="@+id/trapsLeftTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/trap" />
 
 </android.support.constraint.ConstraintLayout>

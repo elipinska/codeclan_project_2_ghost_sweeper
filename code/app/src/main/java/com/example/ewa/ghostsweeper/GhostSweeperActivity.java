@@ -115,6 +115,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
 
         GridView gridview = findViewById(R.id.gameBoardGridView);
         gridview.setAdapter(boardAdapter);
+        refreshTrapsLeftTextField();
 
     }
 
