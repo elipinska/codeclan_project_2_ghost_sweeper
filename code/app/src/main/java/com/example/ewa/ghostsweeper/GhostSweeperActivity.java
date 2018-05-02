@@ -29,7 +29,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
         newGame();
 
         trapsLeftTextView = findViewById(R.id.trapsLeftTextView);
-        trapsLeftTextView.setText(Integer.toString(game.getTrapsLeft()));
+        refreshTrapsLeftTextField();
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
@@ -67,11 +67,14 @@ public class GhostSweeperActivity extends AppCompatActivity {
                         game.addToTrapsLeft();
                         field.toggleLongPressed();
                         vibrator.vibrate(25);
+                        refreshTrapsLeftTextField();
+
                     } else if (game.getTrapsLeft() > 0){
                         button.setBackgroundResource(R.drawable.trap);
                         game.subtractFromTrapsLeft();
                         field.toggleLongPressed();
                         vibrator.vibrate(25);
+                        refreshTrapsLeftTextField();
                     }
 
                 }
@@ -137,6 +140,11 @@ public class GhostSweeperActivity extends AppCompatActivity {
 
     public void onNewGameButtonPressed(View button) {
         newGame();
+        refreshTrapsLeftTextField();
+    }
+
+    public void refreshTrapsLeftTextField() {
+        trapsLeftTextView.setText(Integer.toString(game.getTrapsLeft()));
     }
 
 
