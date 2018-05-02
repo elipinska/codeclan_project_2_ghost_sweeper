@@ -85,6 +85,10 @@ public class GhostSweeperActivity extends AppCompatActivity {
         newGame();
     }
 
+    public void refreshTrapsLeft() {
+        TextView trapsLeftTextView = findViewById(R.id.trapsLeftTextView);
+    }
+
 
 
 }
