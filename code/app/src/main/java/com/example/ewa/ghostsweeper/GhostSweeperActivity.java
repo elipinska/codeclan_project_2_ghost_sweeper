@@ -26,12 +26,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_sweeper);
 
-        game = new Game(2);
-
-        final BoardAdapter boardAdapter = new BoardAdapter(this, game);
-
-        gridview = findViewById(R.id.gameBoardGridView);
-        gridview.setAdapter(boardAdapter);
+        newGame();
 
         trapsLeftTextView = findViewById(R.id.trapsLeftTextView);
         trapsLeftTextView.setText(Integer.toString(game.getTrapsLeft()));
@@ -51,11 +46,6 @@ public class GhostSweeperActivity extends AppCompatActivity {
                     } else if (gameStatus == GameStatusType.WON) {
                         Toast.makeText(GhostSweeperActivity.this, R.string.won_message, Toast.LENGTH_LONG).show();
                     }
-
-                    TextView tile = view.findViewById(R.id.singleTileTextView);
-
-                    String buttonText = field.getTextForButton();
-                    tile.setText(buttonText);
 
                     ((BoardAdapter)gridview.getAdapter()).notifyDataSetChanged();
 
@@ -137,11 +127,11 @@ public class GhostSweeperActivity extends AppCompatActivity {
     }
 
     public void newGame() {
-        game = new Game(2);
+        game = new Game(20);
 
         BoardAdapter boardAdapter = new BoardAdapter(this, game);
 
-        GridView gridview = findViewById(R.id.gameBoardGridView);
+        gridview = findViewById(R.id.gameBoardGridView);
         gridview.setAdapter(boardAdapter);
     }
 
