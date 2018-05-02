@@ -40,10 +40,8 @@ public class GhostSweeperActivity extends AppCompatActivity {
 
                     GameStatusType gameStatus = game.checkIfGameWonOrLost();
 
-                    if (gameStatus == GameStatusType.LOST) {
-                        Toast.makeText(GhostSweeperActivity.this, R.string.lost_message, Toast.LENGTH_LONG).show();
-                    } else if (gameStatus == GameStatusType.WON) {
-                        Toast.makeText(GhostSweeperActivity.this, R.string.won_message, Toast.LENGTH_LONG).show();
+                    if (gameStatus != GameStatusType.IN_PROGRESS) {
+                        Toast.makeText(GhostSweeperActivity.this, gameStatus.getMessage(), Toast.LENGTH_LONG).show();
                     }
 
                     ((BoardAdapter)gridview.getAdapter()).notifyDataSetChanged();
