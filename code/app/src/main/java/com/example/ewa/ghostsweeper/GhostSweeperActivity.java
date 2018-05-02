@@ -1,6 +1,7 @@
 package com.example.ewa.ghostsweeper;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Vibrator;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -45,10 +46,15 @@ public class GhostSweeperActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //This will get called when the menu item gets clicked
-        if(item.getItemId() == R.id.new_game) {
-            newGame();
 
-            return true;
+        switch (item.getItemId()) {
+            case R.id.new_game:
+                newGame();
+                return true;
+            case R.id.about:
+                Intent intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
