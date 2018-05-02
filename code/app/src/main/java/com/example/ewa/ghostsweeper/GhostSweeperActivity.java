@@ -1,14 +1,19 @@
 package com.example.ewa.ghostsweeper;
 
+import android.content.Context;
+import android.os.Vibrator;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GhostSweeperActivity extends AppCompatActivity {
 
@@ -20,10 +25,68 @@ public class GhostSweeperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_sweeper);
 
-        newGame();
+        game = new Game(2);
+
+        final BoardAdapter boardAdapter = new BoardAdapter(this, game);
+
+        GridView gridview = findViewById(R.id.gameBoardGridView);
+        gridview.setAdapter(boardAdapter);
 
         trapsLeftTextView = findViewById(R.id.trapsLeftTextView);
         trapsLeftTextView.setText(Integer.toString(game.getTrapsLeft()));
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Field field = (Field) view.getTag();
+
+                if (!field.getIsLongPressed()) {
+                    game.uncoverFieldAndNeighbours(field);
+
+                    GameStatusType gameStatus = game.checkIfGameWonOrLost();
+
+                    if (gameStatus == GameStatusType.LOST) {
+                        Toast.makeText(GhostSweeperActivity.this, R.string.lost_message, Toast.LENGTH_LONG).show();
+                    } else if (gameStatus == GameStatusType.WON) {
+                        Toast.makeText(GhostSweeperActivity.this, R.string.won_message, Toast.LENGTH_LONG).show();
+                    }
+
+                    TextView tile = view.findViewById(R.id.singleTileTextView);
+
+                    String buttonText = field.getTextForButton();
+                    tile.setText(buttonText);
+
+                    boardAdapter.notifyDataSetChanged();
+
+                }
+            }
+        });
+
+        gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Vibrator vibrator = (Vibrator) GhostSweeperActivity.this.getSystemService(Context.VIBRATOR_SERVICE);
+                TextView button = view.findViewById(R.id.singleTileTextView);
+                Field field = (Field) view.getTag();
+
+                if (!field.isUncovered()){
+                    if (field.getIsLongPressed()) {
+                        button.setBackgroundColor(ContextCompat.getColor(GhostSweeperActivity.this, R.color.coveredTiles));
+                        button.setText("");
+                        game.addToTrapsLeft();
+                        field.toggleLongPressed();
+                        vibrator.vibrate(25);
+                    } else if (game.getTrapsLeft() > 0){
+                        button.setBackgroundResource(R.drawable.trap);
+                        game.subtractFromTrapsLeft();
+                        field.toggleLongPressed();
+                        vibrator.vibrate(25);
+                    }
+
+                }
+                return true;
+            }
+        });
 
     }
 
@@ -85,9 +148,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
         newGame();
     }
 
-    public void refreshTrapsLeft() {
-        TextView trapsLeftTextView = findViewById(R.id.trapsLeftTextView);
-    }
+
 
 
 
