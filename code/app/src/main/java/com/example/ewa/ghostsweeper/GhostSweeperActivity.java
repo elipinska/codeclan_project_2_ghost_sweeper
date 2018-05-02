@@ -104,7 +104,6 @@ public class GhostSweeperActivity extends AppCompatActivity {
                                 int position, long id) {
             Field field = (Field) view.getTag();
 
-
             game.uncoverFieldAndNeighbours(field);
 
             GameStatusType gameStatus = game.checkIfGameWonOrLost();
