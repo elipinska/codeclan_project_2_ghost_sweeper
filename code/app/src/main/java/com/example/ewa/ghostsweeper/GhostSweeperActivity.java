@@ -30,54 +30,8 @@ public class GhostSweeperActivity extends AppCompatActivity {
         trapsLeftTextView = findViewById(R.id.trapsLeftTextView);
         refreshTrapsLeftTextField();
 
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Field field = (Field) view.getTag();
-
-                if (!field.getIsLongPressed()) {
-                    game.uncoverFieldAndNeighbours(field);
-
-                    GameStatusType gameStatus = game.checkIfGameWonOrLost();
-
-                    if (gameStatus != GameStatusType.IN_PROGRESS) {
-                        Toast.makeText(GhostSweeperActivity.this, gameStatus.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-
-                    ((BoardAdapter)gridview.getAdapter()).notifyDataSetChanged();
-
-                }
-            }
-        });
-
-        gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            public boolean onItemLongClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Vibrator vibrator = (Vibrator) GhostSweeperActivity.this.getSystemService(Context.VIBRATOR_SERVICE);
-                TextView button = view.findViewById(R.id.singleTileTextView);
-                Field field = (Field) view.getTag();
-
-                if (!field.isUncovered()){
-                    if (field.getIsLongPressed()) {
-                        button.setBackgroundColor(ContextCompat.getColor(GhostSweeperActivity.this, R.color.coveredTiles));
-                        button.setText("");
-                        game.addToTrapsLeft();
-                        field.toggleLongPressed();
-                        vibrator.vibrate(25);
-                        refreshTrapsLeftTextField();
-
-                    } else if (game.getTrapsLeft() > 0){
-                        button.setBackgroundResource(R.drawable.trap);
-                        game.subtractFromTrapsLeft();
-                        field.toggleLongPressed();
-                        vibrator.vibrate(25);
-                        refreshTrapsLeftTextField();
-                    }
-
-                }
-                return true;
-            }
-        });
+        gridview.setOnItemClickListener(onItemClick);
+        gridview.setOnItemLongClickListener(onItemLongClick);
 
     }
 
@@ -144,6 +98,54 @@ public class GhostSweeperActivity extends AppCompatActivity {
     public void refreshTrapsLeftTextField() {
         trapsLeftTextView.setText(Integer.toString(game.getTrapsLeft()));
     }
+
+    AdapterView.OnItemClickListener onItemClick = new AdapterView.OnItemClickListener() {
+        public void onItemClick(AdapterView<?> parent, View view,
+                                int position, long id) {
+            Field field = (Field) view.getTag();
+
+
+            game.uncoverFieldAndNeighbours(field);
+
+            GameStatusType gameStatus = game.checkIfGameWonOrLost();
+
+            if (game.checkIfGameWonOrLost() != GameStatusType.IN_PROGRESS) {
+                Toast.makeText(GhostSweeperActivity.this, gameStatus.getMessage(), Toast.LENGTH_LONG).show();
+            }
+
+            ((BoardAdapter)gridview.getAdapter()).notifyDataSetChanged();
+
+        }
+    };
+
+    AdapterView.OnItemLongClickListener onItemLongClick = new AdapterView.OnItemLongClickListener() {
+        public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                       int position, long id) {
+            Vibrator vibrator = (Vibrator) GhostSweeperActivity.this.getSystemService(Context.VIBRATOR_SERVICE);
+            TextView button = view.findViewById(R.id.singleTileTextView);
+            Field field = (Field) view.getTag();
+
+            if (!field.isUncovered()){
+                if (field.getIsLongPressed()) {
+                    button.setBackgroundColor(ContextCompat.getColor(GhostSweeperActivity.this, R.color.coveredTiles));
+                    button.setText("");
+                    game.addToTrapsLeft();
+                    field.toggleLongPressed();
+                    vibrator.vibrate(25);
+                    refreshTrapsLeftTextField();
+
+                } else if (game.getTrapsLeft() > 0){
+                    button.setBackgroundResource(R.drawable.trap);
+                    game.subtractFromTrapsLeft();
+                    field.toggleLongPressed();
+                    vibrator.vibrate(25);
+                    refreshTrapsLeftTextField();
+                }
+
+            }
+            return true;
+        }
+    };
 
 
 
