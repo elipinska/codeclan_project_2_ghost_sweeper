@@ -15,16 +15,27 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class GhostSweeperActivity extends AppCompatActivity {
 
     private Game game;
     private TextView trapsLeftTextView;
     private GridView gridview;
+    private ApplicationState applicationState;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_sweeper);
+
+        applicationState = SharedPreferencesHelper.loadApplicationState(this);
+
+
+        if (applicationState.getGameDifficulty() == null){
+            applicationState = new ApplicationState("NONAME");
+            SharedPreferencesHelper.saveApplicationState(this, applicationState);
+        }
 
         newGame();
 
@@ -33,6 +44,8 @@ public class GhostSweeperActivity extends AppCompatActivity {
 
         gridview.setOnItemClickListener(onItemClick);
         gridview.setOnItemLongClickListener(onItemLongClick);
+
+
 
     }
 
@@ -52,8 +65,12 @@ public class GhostSweeperActivity extends AppCompatActivity {
                 newGame();
                 return true;
             case R.id.about:
-                Intent intent = new Intent(this, AboutActivity.class);
-                startActivity(intent);
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                startActivity(aboutIntent);
+                return true;
+            case R.id.settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                startActivity(settingsIntent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -88,7 +105,11 @@ public class GhostSweeperActivity extends AppCompatActivity {
     }
 
     public void newGame() {
-        game = new Game(20, 30);
+        HashMap gameDifficulty = applicationState.getGameDifficulty();
+        Integer rowNo = (Integer) gameDifficulty.get("rowNo");
+        Integer ghostCount = (Integer) gameDifficulty.get("ghostCount");
+
+        game = new Game(rowNo, ghostCount);
 
         BoardAdapter boardAdapter = new BoardAdapter(this, game);
 
