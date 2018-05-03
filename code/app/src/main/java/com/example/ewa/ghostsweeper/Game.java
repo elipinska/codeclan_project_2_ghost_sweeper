@@ -13,11 +13,11 @@ public class Game implements Parcelable {
     private int mData;
     private int trapsLeft;
 
-    public Game(int rowNo) {
-        this.board = new Board(rowNo);
+    public Game(int rowNo, int bombCount) {
+        this.board = new Board(rowNo,bombCount);
         this.uncoveredFieldsCount = 0;
         this.gameStatus = GameStatusType.IN_PROGRESS;
-        this.trapsLeft = board.getRowNo() * 2;
+        this.trapsLeft = board.getBombCount();
     }
 
     public Board getBoard() {

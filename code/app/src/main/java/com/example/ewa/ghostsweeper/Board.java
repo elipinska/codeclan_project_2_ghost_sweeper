@@ -6,14 +6,20 @@ import java.util.Random;
 public class Board {
     private ArrayList<ArrayList<Field>> fields;
     private int rowNo;
+    private int bombCount;
 
-    public Board(int rowNo) {
+    public Board(int rowNo, int bombCount) {
         this.fields = new ArrayList<>();
+        this.bombCount = bombCount;
         this.rowNo = rowNo;
         createFields();
         addBombs();
         calculateHints();
 
+    }
+
+    public int getBombCount() {
+        return bombCount;
     }
 
     public ArrayList<ArrayList<Field>> getBoard() {
@@ -34,9 +40,10 @@ public class Board {
     }
 
     public void addBombs() {
-        int bombNo = rowNo * 2; //One fifth of all fields
 
-        for (int i = 0; i< bombNo; i++) {
+        int bombsToAdd = bombCount;
+
+        for (int i = 0; i< bombsToAdd; i++) {
             Random rand = new Random();
             int y = rand.nextInt(rowNo);
             int x= rand.nextInt(10);
@@ -44,7 +51,7 @@ public class Board {
             if (!(newBombField.getFieldType() == FieldType.BOMB)) {
                 fields.get(y).set(x, new GhostField(new Position(x, y)));
             } else {
-                bombNo +=1;
+                bombsToAdd +=1;
             }
 
         }
