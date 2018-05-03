@@ -43,10 +43,10 @@ public class SettingsActivity extends AppCompatActivity {
             case 10:
                 radioEasy.setChecked(true);
                 break;
-            case 20:
+            case 15:
                 radioMedium.setChecked(true);
                 break;
-            case 30:
+            case 20:
                 radioHard.setChecked(true);
                 break;
         }
@@ -76,14 +76,14 @@ public class SettingsActivity extends AppCompatActivity {
 
                 if ((modeRadioButton.getText()).equals("Easy")) {
                     rowNo = 10;
-                    bombCount = 8;
+                    bombCount = 10;
                 } else if ((modeRadioButton.getText()).equals("Medium")) {
-                    rowNo = 20;
+                    rowNo = 15;
                     bombCount = 20;
 
                 } else if ((modeRadioButton.getText()).equals("Hard")) {
-                    rowNo = 30;
-                    bombCount = 40;
+                    rowNo = 20;
+                    bombCount = 35;
 
                 }
 

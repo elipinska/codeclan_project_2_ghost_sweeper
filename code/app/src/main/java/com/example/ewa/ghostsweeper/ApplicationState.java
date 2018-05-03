@@ -12,7 +12,7 @@ public class ApplicationState {
   public ApplicationState(String userName){
     this.userName = userName;
     this.gameDifficulty = new HashMap<>();
-    gameDifficulty.put("rowNo", 20);
+    gameDifficulty.put("rowNo", 15);
     gameDifficulty.put("ghostCount", 20);
   }
 
