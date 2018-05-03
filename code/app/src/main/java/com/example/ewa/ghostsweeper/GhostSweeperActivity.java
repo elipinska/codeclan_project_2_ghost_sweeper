@@ -175,7 +175,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
             if (game.checkIfGameWonOrLost() != GameStatusType.IN_PROGRESS) {
                 Toast.makeText(GhostSweeperActivity.this, gameStatus.getMessage(), Toast.LENGTH_LONG).show();
             }
-            
+
             return true;
         }
     };

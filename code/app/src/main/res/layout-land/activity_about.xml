@@ -15,9 +15,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ghost_sweeper_logo" />
@@ -37,9 +37,10 @@
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.664"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aboutInfoTextView"
-        app:layout_constraintVertical_bias="0.197" />
+        app:layout_constraintVertical_bias="0.125" />
 
     <TextView
         android:id="@+id/aboutTextView"
@@ -56,13 +57,14 @@
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.671"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gameLogoImageView"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/aboutInfoTextView"
-        android:layout_width="342dp"
+        android:layout_width="392dp"
         android:layout_height="111dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -75,15 +77,14 @@
         android:textColorLink="@color/coveredTiles"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gameLogoImageView"
         app:layout_constraintTop_toBottomOf="@+id/aboutTextView"
-        app:layout_constraintVertical_bias="0.005" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/creditsInfoTextView"
-        android:layout_width="336dp"
-        android:layout_height="106dp"
+        android:layout_width="388dp"
+        android:layout_height="66dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -95,10 +96,9 @@
         android:textColorLink="@color/coveredTiles"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gameLogoImageView"
         app:layout_constraintTop_toBottomOf="@+id/creditsTextView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -112,9 +112,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/creditsTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.677"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aboutInfoTextView"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.952"
         app:srcCompat="@drawable/cc_by_nc" />
 </android.support.constraint.ConstraintLayout>
