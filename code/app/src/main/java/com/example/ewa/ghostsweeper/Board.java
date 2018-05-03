@@ -95,7 +95,7 @@ public class Board {
 
     public Field getFieldAtIndex(int index) {
         int y = index/10;
-        int x = index - 10*y;
+        int x = index % 10;
 
         return fields.get(y).get(x);
     }

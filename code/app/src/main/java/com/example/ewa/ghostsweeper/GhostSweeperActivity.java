@@ -151,12 +151,6 @@ public class GhostSweeperActivity extends AppCompatActivity {
             TextView button = view.findViewById(R.id.singleTileTextView);
             Field field = (Field) view.getTag();
 
-            GameStatusType gameStatus = game.checkIfGameWonOrLost();
-
-            if (game.checkIfGameWonOrLost() != GameStatusType.IN_PROGRESS) {
-                Toast.makeText(GhostSweeperActivity.this, gameStatus.getMessage(), Toast.LENGTH_LONG).show();
-            }
-
             if (!field.isUncovered()){
                 if (field.getIsLongPressed()) {
                     button.setBackgroundColor(ContextCompat.getColor(GhostSweeperActivity.this, R.color.coveredTiles));
@@ -175,6 +169,13 @@ public class GhostSweeperActivity extends AppCompatActivity {
                 }
 
             }
+
+            GameStatusType gameStatus = game.checkIfGameWonOrLost();
+
+            if (game.checkIfGameWonOrLost() != GameStatusType.IN_PROGRESS) {
+                Toast.makeText(GhostSweeperActivity.this, gameStatus.getMessage(), Toast.LENGTH_LONG).show();
+            }
+            
             return true;
         }
     };
