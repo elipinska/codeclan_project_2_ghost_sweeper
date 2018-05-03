@@ -5,12 +5,10 @@ import java.util.HashMap;
 public class ApplicationState {
 
   private HashMap<String, Integer> gameDifficulty;
-  private String userName;
 
 
 
-  public ApplicationState(String userName){
-    this.userName = userName;
+  public ApplicationState(){
     this.gameDifficulty = new HashMap<>();
     gameDifficulty.put("rowNo", 15);
     gameDifficulty.put("ghostCount", 20);

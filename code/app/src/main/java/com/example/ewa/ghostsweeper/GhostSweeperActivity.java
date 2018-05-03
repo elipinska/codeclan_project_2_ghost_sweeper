@@ -33,7 +33,7 @@ public class GhostSweeperActivity extends AppCompatActivity {
 
 
         if (applicationState.getGameDifficulty() == null){
-            applicationState = new ApplicationState("NONAME");
+            applicationState = new ApplicationState();
             SharedPreferencesHelper.saveApplicationState(this, applicationState);
         }
 
