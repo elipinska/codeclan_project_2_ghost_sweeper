@@ -26,19 +26,21 @@
 
     <Button
         android:id="@+id/newGameButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="148dp"
         android:layout_marginLeft="148dp"
         android:layout_marginRight="148dp"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
+        android:layout_marginTop="8dp"
+        android:text="New game"
+        android:textSize="10sp"
+        android:gravity="bottom|center"
+        android:background="@drawable/ghost_sweeper_logo"
         android:onClick="onNewGameButtonPressed"
-        android:text="@string/new_game"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.806"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,8 +54,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="44dp"
         android:layout_marginTop="13dp"
-        android:textSize="24dp"
         android:textColor="@android:color/background_light"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/gameBoardGridView"
         app:layout_constraintEnd_toStartOf="@+id/newGameButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,5 +70,6 @@
         app:layout_constraintEnd_toStartOf="@+id/trapsLeftTextView"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/trap" />
+
 
 </android.support.constraint.ConstraintLayout>

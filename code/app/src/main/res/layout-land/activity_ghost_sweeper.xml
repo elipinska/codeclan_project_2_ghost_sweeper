@@ -51,23 +51,26 @@
 
     <Button
         android:id="@+id/newGameButton"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/ghost_sweeper_logo"
         android:onClick="onNewGameButtonPressed"
-        android:text="@string/new_game"
-        android:textColor="@android:color/background_light"
+        android:text="New game"
+        android:textSize="10sp"
+        android:gravity="bottom|center"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/gameBoardGridView"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.263" />
 
     <TextView
         android:id="@+id/trapsLeftTextView"
@@ -78,28 +81,28 @@
         android:layout_marginLeft="3dp"
         android:layout_marginRight="20dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:textColor="@android:color/background_light"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/gameBoardGridView"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/trapImageView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.288" />
+        app:layout_constraintVertical_bias="0.474" />
 
     <ImageView
         android:id="@+id/trapImageView"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.286"
+        app:layout_constraintVertical_bias="0.452"
         app:srcCompat="@drawable/trap" />
 
 </android.support.constraint.ConstraintLayout>
