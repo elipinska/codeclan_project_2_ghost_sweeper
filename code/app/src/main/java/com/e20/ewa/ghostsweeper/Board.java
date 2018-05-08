@@ -1,4 +1,4 @@
-package com.example.ewa.ghostsweeper;
+package com.e20.ewa.ghostsweeper;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -48,7 +48,7 @@ public class Board {
             int y = rand.nextInt(rowNo);
             int x= rand.nextInt(10);
             Field newBombField = fields.get(y).get(x);
-            if (!(newBombField.getFieldType() == FieldType.BOMB)) {
+            if (!(newBombField.getFieldType() == FieldType.GHOST)) {
                 fields.get(y).set(x, new GhostField(new Position(x, y)));
             } else {
                 bombsToAdd +=1;
@@ -62,7 +62,7 @@ public class Board {
 
         for (int y = 0; y < rowNo; y++) {
             for (int x = 0; x < 10; x++) {
-                if ((fields.get(y).get(x)).getFieldType() == FieldType.BOMB) {
+                if ((fields.get(y).get(x)).getFieldType() == FieldType.GHOST) {
                     bombPositions.add(fields.get(y).get(x).getPosition());
                 }
             }
@@ -83,7 +83,7 @@ public class Board {
                     for (int j = bombX - 1; j<= bombX + 1; j++) {
                         if ((j >= 0) && (j < 10)) {
                             Field neighbour = fields.get(i).get(j);
-                            if (!(neighbour.getFieldType() == FieldType.BOMB)) {
+                            if (!(neighbour.getFieldType() == FieldType.GHOST)) {
                                 ((HintField) neighbour).addToBombCount();
                             }
                         }

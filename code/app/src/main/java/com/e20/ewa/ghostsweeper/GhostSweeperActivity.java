@@ -1,4 +1,4 @@
-package com.example.ewa.ghostsweeper;
+package com.e20.ewa.ghostsweeper;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.ewa.ghostsweeper.R;
 
 import java.util.HashMap;
 

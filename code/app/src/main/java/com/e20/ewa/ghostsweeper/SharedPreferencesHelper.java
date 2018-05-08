@@ -1,8 +1,9 @@
-package com.example.ewa.ghostsweeper;
+package com.e20.ewa.ghostsweeper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.ewa.ghostsweeper.R;
 import com.google.gson.Gson;
 
 public class SharedPreferencesHelper {

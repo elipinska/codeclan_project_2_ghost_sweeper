@@ -1,18 +1,14 @@
-package com.example.ewa.ghostsweeper;
+package com.e20.ewa.ghostsweeper;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.os.Vibrator;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.ewa.ghostsweeper.R;
 
 public class BoardAdapter extends BaseAdapter {
     private Context mContext;
@@ -61,7 +57,7 @@ public class BoardAdapter extends BaseAdapter {
             tile.setBackgroundColor(ContextCompat.getColor(mContext, R.color.coveredTiles));
         }
 
-        if (field.getFieldType() == FieldType.BOMB && field.isUncovered()) {
+        if (field.getFieldType() == FieldType.GHOST && field.isUncovered()) {
             GhostField bomb = (GhostField) field;
             tile.setBackgroundResource(R.drawable.ghost);
             if (bomb.isActivatedByPlayer()) {

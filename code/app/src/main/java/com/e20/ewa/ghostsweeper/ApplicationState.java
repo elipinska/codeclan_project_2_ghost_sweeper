@@ -1,4 +1,4 @@
-package com.example.ewa.ghostsweeper;
+package com.e20.ewa.ghostsweeper;
 
 import java.util.HashMap;
 

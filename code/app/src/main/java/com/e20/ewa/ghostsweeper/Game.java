@@ -1,4 +1,4 @@
-package com.example.ewa.ghostsweeper;
+package com.e20.ewa.ghostsweeper;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -69,7 +69,7 @@ public class Game implements Parcelable {
 
         if (!field.getIsLongPressed()) {
 
-            if (field.getFieldType() == FieldType.BOMB) {
+            if (field.getFieldType() == FieldType.GHOST) {
                 if (!field.isUncovered()) {
                     ((GhostField) field).activate();
                 }
@@ -83,7 +83,7 @@ public class Game implements Parcelable {
                 if (field.getFieldType() == FieldType.EMPTY) {
                     ArrayList<Field> neighbours = board.getAllNeighboursForField(field);
                     for (Field neighbour : neighbours) {
-                        if (neighbour.getFieldType() != FieldType.BOMB && !neighbour.isUncovered()) {
+                        if (neighbour.getFieldType() != FieldType.GHOST && !neighbour.isUncovered()) {
                             uncoverFieldAndNeighbours(neighbour); //recursion
                         }
                     }

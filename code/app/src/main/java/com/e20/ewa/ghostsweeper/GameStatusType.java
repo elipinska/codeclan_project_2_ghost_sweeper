@@ -1,4 +1,6 @@
-package com.example.ewa.ghostsweeper;
+package com.e20.ewa.ghostsweeper;
+
+import com.example.ewa.ghostsweeper.R;
 
 public enum GameStatusType {
     IN_PROGRESS(0),

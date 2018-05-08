@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.example.ewa.ghostsweeper.GhostSweeperActivity">
+    tools:context="com.example.ewa.ghostsweeper.com.e20.ewa.ghostsweeper.GhostSweeperActivity">
 
 
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"

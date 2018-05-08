@@ -1,5 +1,8 @@
 package com.example.ewa.ghostsweeper;
 
+import com.e20.ewa.ghostsweeper.Board;
+import com.e20.ewa.ghostsweeper.FieldType;
+
 import org.junit.Before;
 import org.junit.Test;
 

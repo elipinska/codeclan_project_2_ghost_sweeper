@@ -1,4 +1,4 @@
-package com.example.ewa.ghostsweeper;
+package com.e20.ewa.ghostsweeper;
 
 public class GhostField extends Field {
 
@@ -26,6 +26,6 @@ public class GhostField extends Field {
 
     @Override
     public FieldType getFieldType() {
-        return FieldType.BOMB;
+        return FieldType.GHOST;
     }
 }

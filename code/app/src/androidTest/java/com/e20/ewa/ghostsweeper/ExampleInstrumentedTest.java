@@ -1,4 +1,4 @@
-package com.example.ewa.ghostsweeper;
+package com.e20.ewa.ghostsweeper;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
