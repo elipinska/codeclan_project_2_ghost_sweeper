@@ -47,7 +47,7 @@ public class BoardAdapter extends BaseAdapter {
         tile.setText(buttonText);
         if (field.getFieldType() == FieldType.HINT) {
             HintField hintField = (HintField) field;
-            tile.setTextColor(ContextCompat.getColor(mContext, HintTextColor.getHintColor(hintField.getBombCount())));
+            tile.setTextColor(ContextCompat.getColor(mContext, HintTextColor.getHintColor(hintField.getGhostCount())));
         }
 
 
@@ -58,9 +58,9 @@ public class BoardAdapter extends BaseAdapter {
         }
 
         if (field.getFieldType() == FieldType.GHOST && field.isUncovered()) {
-            GhostField bomb = (GhostField) field;
+            GhostField ghost = (GhostField) field;
             tile.setBackgroundResource(R.drawable.ghost);
-            if (bomb.isActivatedByPlayer()) {
+            if (ghost.isActivatedByPlayer()) {
                 tile.setBackgroundResource(R.drawable.ghost_angry);
             }
         }

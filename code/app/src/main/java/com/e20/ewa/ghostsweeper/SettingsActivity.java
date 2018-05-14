@@ -17,14 +17,10 @@ public class SettingsActivity extends AppCompatActivity {
 
     private RadioGroup difficultyRadioGroup;
     private RadioButton modeRadioButton;
-    private Button saveBtn;
     private Integer rowNo;
-    private Integer bombCount;
+    private Integer ghostCount;
     private Context context;
     private ApplicationState applicationState;
-    private RadioButton radioEasy;
-    private RadioButton radioMedium;
-    private RadioButton radioHard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +28,9 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         context = this;
-        radioEasy = findViewById(R.id.radioEasy);
-        radioMedium = findViewById(R.id.radioMedium);
-        radioHard = findViewById(R.id.radioHard);
+        RadioButton radioEasy = findViewById(R.id.radioEasy);
+        RadioButton radioMedium = findViewById(R.id.radioMedium);
+        RadioButton radioHard = findViewById(R.id.radioHard);
 
         applicationState = SharedPreferencesHelper.loadApplicationState(context);
 
@@ -59,7 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
     public void addListenerOnButton() {
 
         difficultyRadioGroup = findViewById(R.id.difficultyRadioGroup);
-        saveBtn = findViewById(R.id.saveBtn);
+        Button saveBtn = findViewById(R.id.saveBtn);
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -77,19 +73,19 @@ public class SettingsActivity extends AppCompatActivity {
 
                 if ((modeRadioButton.getText()).equals("Easy")) {
                     rowNo = 10;
-                    bombCount = 10;
+                    ghostCount = 10;
                 } else if ((modeRadioButton.getText()).equals("Medium")) {
                     rowNo = 15;
-                    bombCount = 20;
+                    ghostCount = 20;
 
                 } else if ((modeRadioButton.getText()).equals("Hard")) {
                     rowNo = 20;
-                    bombCount = 35;
+                    ghostCount = 35;
 
                 }
 
                 gameDifficulty.put("rowNo", rowNo);
-                gameDifficulty.put("ghostCount", bombCount);
+                gameDifficulty.put("ghostCount", ghostCount);
 
                 applicationState.setGameDifficulty(gameDifficulty);
                 SharedPreferencesHelper.saveApplicationState(context, applicationState);

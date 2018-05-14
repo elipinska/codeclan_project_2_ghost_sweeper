@@ -9,16 +9,14 @@ import com.example.ewa.ghostsweeper.R;
 
 public class AboutActivity extends AppCompatActivity {
 
-    private TextView aboutInfoTextView;
-    private TextView creditsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        aboutInfoTextView = findViewById(R.id.aboutInfoTextView);
-        creditsTextView = findViewById(R.id.creditsInfoTextView);
+        TextView aboutInfoTextView = findViewById(R.id.aboutInfoTextView);
+        TextView creditsTextView = findViewById(R.id.creditsInfoTextView);
 
         aboutInfoTextView.setMovementMethod(LinkMovementMethod.getInstance());
         creditsTextView.setMovementMethod(LinkMovementMethod.getInstance());

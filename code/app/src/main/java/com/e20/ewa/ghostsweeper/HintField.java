@@ -2,19 +2,19 @@ package com.e20.ewa.ghostsweeper;
 
 public class HintField extends Field {
 
-    private Integer bombCount;
+    private Integer ghostCount;
 
     public HintField(Position position) {
         super(position);
-        bombCount = 0;
+        ghostCount = 0;
     }
 
-    public Integer getBombCount() {
-        return bombCount;
+    public Integer getGhostCount() {
+        return ghostCount;
     }
 
     public void addToGhostCount() {
-        bombCount++;
+        ghostCount++;
     }
 
     @Override
@@ -24,12 +24,12 @@ public class HintField extends Field {
         } else if (getIsLongPressed() && isUncovered()) {
             return "X";
         } else {
-            return (!getIsLongPressed() && isUncovered() && bombCount > 0) ? bombCount.toString() : "";
+            return (!getIsLongPressed() && isUncovered() && ghostCount > 0) ? ghostCount.toString() : "";
         }
     }
 
     @Override
     public FieldType getFieldType() {
-        return (bombCount == 0) ? FieldType.EMPTY : FieldType.HINT;
+        return (ghostCount == 0) ? FieldType.EMPTY : FieldType.HINT;
     }
 }

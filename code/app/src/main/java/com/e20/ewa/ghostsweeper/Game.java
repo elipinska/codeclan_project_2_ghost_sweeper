@@ -13,8 +13,8 @@ public class Game implements Parcelable {
     private int mData;
     private int trapsLeft;
 
-    public Game(int rowNo, int bombCount) {
-        this.board = new Board(rowNo,bombCount);
+    public Game(int rowNo, int ghostCount) {
+        this.board = new Board(rowNo,ghostCount);
         this.uncoveredFieldsCount = 0;
         this.gameStatus = GameStatusType.IN_PROGRESS;
         this.trapsLeft = board.getGhostCount();
@@ -37,23 +37,23 @@ public class Game implements Parcelable {
         trapsLeft--;
     }
 
-    public void addToUncoveredFieldsCount() {
+    private void addToUncoveredFieldsCount() {
         uncoveredFieldsCount++;
     }
 
     public GameStatusType checkIfGameWonOrLost() {
         int allFieldsCount = board.getSimpleFieldsArray().size();
-        int bombCount = board.getGhostPositions().size();
+        int ghostCount = board.getGhostPositions().size();
 
         if (uncoveredFieldsCount >= allFieldsCount) {
             gameStatus = GameStatusType.LOST;
-        } else if (uncoveredFieldsCount == allFieldsCount - bombCount && trapsLeft == 0) {
+        } else if (uncoveredFieldsCount == allFieldsCount - ghostCount && trapsLeft == 0) {
             gameStatus = GameStatusType.WON;
         }
         return gameStatus;
     }
 
-    public void uncoverAll() {
+    private void uncoverAll() {
         for(Field field: board.getSimpleFieldsArray()) {
             if (!field.isUncovered()) {
                 field.markAsUncovered();
