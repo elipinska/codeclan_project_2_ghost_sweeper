@@ -13,7 +13,7 @@ public class HintField extends Field {
         return bombCount;
     }
 
-    public void addToBombCount() {
+    public void addToGhostCount() {
         bombCount++;
     }
 

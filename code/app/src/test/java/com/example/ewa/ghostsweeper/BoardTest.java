@@ -44,7 +44,7 @@ public class BoardTest {
 
     @Test
     public void canGetBombPositions() {
-        assertEquals(10, board.getBombPositions().size());
+        assertEquals(10, board.getGhostPositions().size());
     }
 
 

@@ -6,20 +6,20 @@ import java.util.Random;
 public class Board {
     private ArrayList<ArrayList<Field>> fields;
     private int rowNo;
-    private int bombCount;
+    private int ghostCount;
 
-    public Board(int rowNo, int bombCount) {
+    public Board(int rowNo, int ghostCount) {
         this.fields = new ArrayList<>();
-        this.bombCount = bombCount;
+        this.ghostCount = ghostCount;
         this.rowNo = rowNo;
         createFields();
-        addBombs();
+        addGhostsToGhostSweeperBoard();
         calculateHints();
 
     }
 
-    public int getBombCount() {
-        return bombCount;
+    public int getGhostCount() {
+        return ghostCount;
     }
 
     public ArrayList<ArrayList<Field>> getBoard() {
@@ -30,7 +30,8 @@ public class Board {
         return rowNo;
     }
 
-    public void createFields() {
+
+    private void createFields() {
         for (int y = 0; y < rowNo; y++) {
             fields.add(new ArrayList<Field>());
             for (int x = 0; x < 10; x++) {
@@ -39,52 +40,53 @@ public class Board {
         }
     }
 
-    public void addBombs() {
 
-        int bombsToAdd = bombCount;
+    private void addGhostsToGhostSweeperBoard() {
 
-        for (int i = 0; i< bombsToAdd; i++) {
+        int ghostsToAdd = ghostCount;
+
+        for (int i = 0; i< ghostsToAdd; i++) {
             Random rand = new Random();
             int y = rand.nextInt(rowNo);
             int x= rand.nextInt(10);
-            Field newBombField = fields.get(y).get(x);
-            if (!(newBombField.getFieldType() == FieldType.GHOST)) {
+            Field newGhostField = fields.get(y).get(x);
+            if (!(newGhostField.getFieldType() == FieldType.GHOST)) {
                 fields.get(y).set(x, new GhostField(new Position(x, y)));
             } else {
-                bombsToAdd +=1;
+                ghostsToAdd +=1;
             }
 
         }
     }
 
-    public ArrayList<Position> getBombPositions() {
-        ArrayList<Position> bombPositions = new ArrayList<>();
+    public ArrayList<Position> getGhostPositions() {
+        ArrayList<Position> ghostPositions = new ArrayList<>();
 
         for (int y = 0; y < rowNo; y++) {
             for (int x = 0; x < 10; x++) {
                 if ((fields.get(y).get(x)).getFieldType() == FieldType.GHOST) {
-                    bombPositions.add(fields.get(y).get(x).getPosition());
+                    ghostPositions.add(fields.get(y).get(x).getPosition());
                 }
             }
         }
-        return bombPositions;
+        return ghostPositions;
 
     }
 
-    public void calculateHints() {
-        ArrayList<Position> allBombPositions = getBombPositions();
+    private void calculateHints() {
+        ArrayList<Position> allGhostPositions = getGhostPositions();
 
-        for (Position position: allBombPositions) {
-            int bombY = position.getY();
-            int bombX = position.getX();
+        for (Position position: allGhostPositions) {
+            int ghostY = position.getY();
+            int ghostX = position.getX();
 
-            for (int i = bombY - 1; i <= bombY + 1; i++) {
+            for (int i = ghostY - 1; i <= ghostY + 1; i++) {
                 if ((i >= 0) && (i < rowNo)) {
-                    for (int j = bombX - 1; j<= bombX + 1; j++) {
+                    for (int j = ghostX - 1; j<= ghostX + 1; j++) {
                         if ((j >= 0) && (j < 10)) {
                             Field neighbour = fields.get(i).get(j);
                             if (!(neighbour.getFieldType() == FieldType.GHOST)) {
-                                ((HintField) neighbour).addToBombCount();
+                                ((HintField) neighbour).addToGhostCount();
                             }
                         }
                     }

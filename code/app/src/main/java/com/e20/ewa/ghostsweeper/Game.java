@@ -17,7 +17,7 @@ public class Game implements Parcelable {
         this.board = new Board(rowNo,bombCount);
         this.uncoveredFieldsCount = 0;
         this.gameStatus = GameStatusType.IN_PROGRESS;
-        this.trapsLeft = board.getBombCount();
+        this.trapsLeft = board.getGhostCount();
     }
 
     public Board getBoard() {
@@ -43,7 +43,7 @@ public class Game implements Parcelable {
 
     public GameStatusType checkIfGameWonOrLost() {
         int allFieldsCount = board.getSimpleFieldsArray().size();
-        int bombCount = board.getBombPositions().size();
+        int bombCount = board.getGhostPositions().size();
 
         if (uncoveredFieldsCount >= allFieldsCount) {
             gameStatus = GameStatusType.LOST;
