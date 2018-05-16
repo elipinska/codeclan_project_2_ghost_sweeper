@@ -1,5 +1,5 @@
 # GhostSweeper
-GhostSweeper Java game written for Android over the space of six days (project 2 from CodeClan's 16-week software development course). I based the game logic on the classic Minesweeper - the player navigates the board as they uncover the tiles and try to trap all evil spirits lurking in the shadows. My MVP was to create a simple playable game with a clickable board containing hidden ghosts and number-based hints indicating how many ghosts are in direct vicinity. Beyond that, I managed to implement 'traps' enabling the player to capture ghosts (you can't place more traps on the board than there are ghosts) and three difficulty levels.  
+GhostSweeper is a Java game written for Android over the space of six days (project 2 from CodeClan's 16-week software development course). I based the game logic on the classic Minesweeper - the player navigates the board as they uncover the tiles and try to trap all evil spirits lurking in the shadows. My MVP was to create a simple playable game with a clickable board containing hidden ghosts and number-based hints indicating how many ghosts are in direct vicinity. Beyond that, I managed to implement 'traps' enabling the player to capture ghosts (you can't place more traps on the board than there are ghosts) and three difficulty levels.  
 
 ## Learning objectives
 - build a complete app in Android Studio,
