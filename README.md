@@ -1,5 +1,5 @@
 # GhostSweeper
-GhostSweeper game written in Java for Android (project 2 from CodeClan's 16-week software development course). Game logic based on the classic Minesweeper - the player navigates the board as they uncover the tiles and try to trap all evil spirits lurking in the shadows.
+GhostSweeper game written in Java for Android (project 2 from CodeClan's 16-week software development course). Game logic is based on the classic Minesweeper - the player navigates the board as they uncover the tiles and try to trap all evil spirits lurking in the shadows.
 
 ## Learning objectives
 - build a complete app in Android Studio,
