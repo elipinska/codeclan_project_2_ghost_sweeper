@@ -12,5 +12,5 @@ GhostSweeper is a Java game written for Android over the space of six days (proj
 
 ## The app can be downloaded from the <a href="https://play.google.com/store/apps/details?id=com.e20.ewa.ghostsweeper">Google Play Store</a>. Reviews and feedback very welcome!
 
-![screenshot1](ghostsweeper1.png) ![screenshot2](ghostsweeper2.png)
+![screenshot2](ghostsweeper2.png) ![screenshot1](ghostsweeper1.png)
 
